@@ -1,7 +1,11 @@
 // JSON ممكن نعملها لحالها في ملف
+// المصفوفة الجاهزة  للباكند
+// لتبديل مصدر البيانات بـ API
+let count = 1;
 const cards = [
   {
-    img: "../img/Photo (1).png",
+    id: "reg_1" + count++,
+    img: "../img/Photo (1).png", // x
     "card-title": "علاج طارئ لطفلة مريضة",
     "card-desc": "تعاني الطفلة من حالة صحية حرجة  تتطلب علاجا طارئا",
     "card-longDesc": `تعاني الطفلة رُبى  (6 سنوات) من حالة صحية حرجة تتطلب علاجًا طبيًا طارئًا لا يمكن تأجيله.
@@ -31,8 +35,10 @@ const cards = [
       { name: "مجهول", amount: 108, date: "2025-05-05T09:00:00Z" },
       { name: "مجهول", amount: 108, date: "2025-05-08T06:40:00Z" },
     ],
+    status: "pending", // أو finished
   },
   {
+    id: "reg_1" + count++,
     img: "images/medical1.jpg",
     "card-title": "أدوية لمرضى مزمنين",
     "card-desc": "مجموعة مرضى في مخيم يحتاجون الى ادوية لأمراض مزمنة ",
@@ -61,8 +67,10 @@ const cards = [
       { name: " محمد", amount: 54, date: "2025-02-08T12:00:00Z" },
       { name: "خالد محمود", amount: 120, date: "2025-05-01T10:45:00Z" },
     ],
+    status: "pending", // أو finished
   },
   {
+    id: "reg_1" + count++,
     img: "../img/Photo.png",
     "card-title": "مساعدة غذائية لعائلة نازحة وصلت حديثًا",
     "card-desc": "العائلة وصلت المخيم وتحتاج سلة غذائية أساسية بشكل عاجلا",
@@ -91,8 +99,10 @@ const cards = [
       { name: "فاطمة أحمد", amount: 250, date: "2025-05-07T11:15:00Z" },
       { name: "خالد محمود", amount: 120, date: "2025-05-01T10:45:00Z" },
     ],
+    status: "pending", // أو finished
   },
   {
+    id: "reg_1" + count++,
     img: "../img/Photo (3).png",
     "card-title": "مساعدة ملابس ودفء لطفل نازح",
     "card-desc": "طفل بحاجة لملابس شتوية تساعده على تحمل ظروف البرد",
@@ -119,8 +129,10 @@ const cards = [
       { name: "سارة خالد", amount: 65, date: "2025-05-03T16:20:00Z" },
       { name: "خالد محمود", amount: 120, date: "2025-05-01T10:45:00Z" },
     ],
+    status: "finished", // أو
   },
   {
+    id: "reg_1" + count++,
     img: "../img/Photo (2).png",
     "card-title": "وجبات ساخنة لعائلة تقيم في الخيام",
     "card-desc": "العائلة تعيش في ظروف صعبة وتحتاج لوجبات غذائية يومية",
@@ -149,8 +161,10 @@ const cards = [
       { name: "سارة خالد", amount: 65, date: "2025-05-03T16:20:00Z" },
       { name: "خالد محمود", amount: 120, date: "2025-05-01T10:45:00Z" },
     ],
+    status: "finished", // أو
   },
   {
+    id: "reg_1" + count++,
     img: "images/medical2.jpg",
     "card-title": "معدات طبية لغزة",
     "card-desc":
@@ -179,8 +193,10 @@ const cards = [
       { name: "زينب علي", amount: 150, date: "2025-04-28T17:00:00Z" },
       { name: "رنا فوزي", amount: 90, date: "2025-04-27T13:30:00Z" },
     ],
+    status: "pending", // أو finished
   },
   {
+    id: "reg_1" + count++,
     img: "../img/Photo (6).png",
     "card-title": "توفير جهاز أكسجين لطفل مريض",
     "card-desc":
@@ -208,8 +224,10 @@ const cards = [
       { name: "حسام سليم", amount: 80, date: "2025-04-26T18:40:00Z" },
       { name: "أحمد سعيد", amount: 130, date: "2025-04-25T14:50:00Z" },
     ],
+    status: "pending", // أو finished
   },
   {
+    id: "reg_1" + count++,
     img: "images/clothes2.jpg",
     "card-title": "توزيع ملابس على الأسر المحتاجة",
     "card-desc":
@@ -238,8 +256,10 @@ const cards = [
       { name: "فاطمة أحمد", amount: 250, date: "2025-05-07T11:15:00Z" },
       { name: "سامي عبد الله", amount: 75, date: "2025-05-06T13:00:00Z" },
     ],
+    status: "pending", // أو finished
   },
   {
+    id: "reg_1" + count++,
     img: "../img/Photo (9).png",
     "card-title": "حليب أطفال ومستلزمات لرضيع",
     "card-desc": "رضيع يعاني من سوء تغذية بحاجة لحليب خاص وعلاجات مغذية",
@@ -268,8 +288,10 @@ const cards = [
       { name: "نورة منصور", amount: 500, date: "2025-04-30T09:00:00Z" },
       { name: "إبراهيم يوسف", amount: 200, date: "2025-04-29T12:10:00Z" },
     ],
+    status: "pending", // أو finished
   },
   {
+    id: "reg_1" + count++,
     img: "../img/Photo (5).png",
     "card-title": "أحذية وملابس شتوية لأطفال في الخيام",
     "card-desc": "الأطفال لا يملكون ما يقيهم برد الشتاء ويحتاجون أحذية ومعاطف",
@@ -299,6 +321,7 @@ const cards = [
       { name: "خالد محمود", amount: 120, date: "2025-05-01T10:45:00Z" },
       { name: "إبراهيم يوسف", amount: 200, date: "2025-04-29T12:10:00Z" },
     ],
+    status: "finished", // أو
   },
 ];
 
@@ -343,7 +366,7 @@ function createCard(data) {
   card.addEventListener("click", () => {
     //`localStorage` تمرير البيانات عبر
     localStorage.setItem("cardsData", JSON.stringify(data));
-    window.location.href = `help-details.html?id=${cards.indexOf(data)}`;
+    window.location.href = `help-details.html?id=${card.id}`;
 
     // `URLSearchParams`  او باستخدام
 

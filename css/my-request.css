@@ -1,0 +1,253 @@
+.menu-toggle{
+    color: #1A6C9E;
+}
+body {
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+  direction: rtl;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.page-title {
+    text-align: center;
+    /* margin-bottom: 30px; */
+    color: #1A6C9E;
+    /* font-size: 30px; */
+    margin: 0;
+}
+
+.filter-buttons {
+    margin-top: 30px;
+    margin-bottom: 25px;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 10px;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background-color: #1A6C9E;
+    color: white;
+}
+.cards-container {
+  /* display: flex; */
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.request-card {
+    display: flex;
+    align-items: center;
+    /* gap: 44px; */
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    /* width: 300px; */
+    transition: transform 0.3s ease;
+}
+
+.request-card:hover {
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
+.request-card img {
+    max-width: 100%;
+    width: 270px;
+    height: 180px;
+    object-fit: cover;
+}
+
+.request-content {
+    padding: 0 15px;
+    padding-left: 50px;
+    margin-left: 30px;
+    flex: 1;
+}
+
+.request-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+    /* margin-top: -30px;*/
+}
+.request-desc {
+    margin-bottom: 10px;
+}
+
+.request-type {
+    color: #1A6C9E;
+    font-weight: 500;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.request-amount {
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 14px;
+}
+
+.progress-bar {
+    background-color: #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    height: 12px;
+    margin-bottom: 20px;
+}
+
+.progress {
+    background-color: #1A6C9E;
+    height: 100%;
+}
+
+/* .request-status {
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #4CAF50;
+}
+
+.request-status.finished {
+  color: #FFC107;
+}
+.request-status.pending {
+  color: #4CAF50;
+} */
+
+/*  */
+
+.request-status {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background-color: #eee;
+  font-size: 13px;
+}
+.request-status.pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+.request-status.finished {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+/*  */
+.request-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.request-actions button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    background-color: #2185c4;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.request-actions button:hover {
+  background-color: #1A6C9E;
+}
+
+.request-actions .btn-edit {
+  background-color: #FFC107;
+}
+
+.request-actions .btn-edit:hover {
+  background-color: #FFA000;
+}
+
+.request-actions .btn-delete {
+  background-color: #F44336;
+}
+
+.request-actions .btn-delete:hover {
+  background-color: #D32F2F;
+}
+ 
+
+
+.hidden {
+  display: none !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+
+@media (max-width : 920px){
+  .request-content {
+     padding-left: 0;
+    margin-left: 0;
+  }
+  .request-content {
+    font-size: 15px;
+  }
+  .request-actions {
+    padding: 10px;
+  }
+}
+@media (max-width : 767px) {
+  .filter-buttons {
+    text-align: center;
+  }
+  .request-card {
+    flex-direction: column;
+    max-width: 400px;
+    margin: 10px auto 20px;
+  }
+  .request-content {
+    padding-left: 0;
+    margin-left: 0;
+  }
+  .request-actions{
+    flex-direction: row;
+  }
+    .request-card img{
+      margin-bottom: 15px;
+      width: 100%;
+      border-radius: 8px;
+    }
+
+}

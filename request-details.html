@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلب المساعدة</title>
+    <!-- Normalize  File  -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Open+Sans:wdth,wght@75..100,300..800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="css/header&footer.css">
+    <link rel="stylesheet" href="css/my-request.css">
+    <link rel="stylesheet" href="css/request-details.css">
+</head>
+<body>
+  <div class="container">
+    <h2>تفاصيل حالة الطلب</h2>
+    <div class="request-card">
+      <img id="request-image" alt="صورة الطلب" />
+      <div class="request-info">
+        <h3 id="request-title"></h3>
+        <p><strong>نوع المساعدة:</strong> <span id="request-type"></span></p>
+        <p><strong>المبلغ المطلوب:</strong> <span id="request-amount"></span> شيكل</p>
+        <p><strong>الحالة:</strong> <span id="request-status"></span></p>
+        <p><strong>الأولوية:</strong> <span id="request-priority"></span></p>
+        <p><strong>الوصف:</strong></p>
+        <p id="request-description"></p>
+
+        <div id="evidence-section">
+          <strong>ملفات الإثبات:</strong>
+          <div id="evidence-files"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/request-details.js"></script>
+</body>
+</html>
+
+
+<!-- اه ياريت بس قبل بدي اسالك هلا البيانات الموحدة اللي هعملها اخليها في صفحة لحال طيب اخلي في نفس الصفحة هاي اعمل حفظ في الlocalStorage او Query Params: ولا في الصفحة اللي بدي البيانات فيها اعمل هيك فاهم علي ؟؟؟ وبعد ما ترد علي وافهم  انا  بعدها ما تنسى نعمل  "زر المعاينة" في صفحة "طلباتي"  ولو بدي صفحة طلباتي اصلا هي كمان بدها تعديل لتكون برضو البيانات ديناميكية برضو وضحلي برضو امانة وان شاء الله تكون فاهم علي  -->
