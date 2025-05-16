@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, sans-serif;
+
   background-color: #f7f7f7;
   margin: 0;
   padding: 0;
@@ -48,4 +48,13 @@ form button {
 
 form button:hover {
   background-color: #155d85;
+}
+
+
+.file-preview a {
+  transition: color 0.3s;
+}
+.file-preview a:hover {
+  color: #0056b3;
+  text-decoration: underline;
 }

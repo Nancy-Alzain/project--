@@ -19,33 +19,139 @@
     <!-- CSS File -->
     <link rel="stylesheet" href="css/header&footer.css">
     <link rel="stylesheet" href="css/my-request.css">
-    <link rel="stylesheet" href="css/request-details.css">
+    <link rel="stylesheet" href="css/help-details.css">
 </head>
 <body>
-  <div class="container">
-    <h2>تفاصيل حالة الطلب</h2>
-    <div class="request-card">
-      <img id="request-image" alt="صورة الطلب" />
-      <div class="request-info">
-        <h3 id="request-title"></h3>
-        <p><strong>نوع المساعدة:</strong> <span id="request-type"></span></p>
-        <p><strong>المبلغ المطلوب:</strong> <span id="request-amount"></span> شيكل</p>
-        <p><strong>الحالة:</strong> <span id="request-status"></span></p>
-        <p><strong>الأولوية:</strong> <span id="request-priority"></span></p>
-        <p><strong>الوصف:</strong></p>
-        <p id="request-description"></p>
 
-        <div id="evidence-section">
-          <strong>ملفات الإثبات:</strong>
-          <div id="evidence-files"></div>
+  <div class="header">
+        <a class="logo" href="landing.htm">
+            <img src="img/Group.png" alt="logo">
+            <h3>وصال</h3>
+        </a>
+        <ul class="links">
+                <li><a href="landing.htm">الرئيسية</a></li>
+                <li><a href="how.htm">كيف يعمل الموقع</a></li>
+                <li><a href="volunteer.html">تطوع معنا </a></li>
+                <li><a href="request-help.htm">طلب المساعدة</a></li>
+                <li><a href="my-request.htm">طلباتي</a></li>
+                <li><a href="volunteer.html">تطوع معنا </a></li>
+                <li><a href="us.html">من نحن؟</a></li>
+                <li><a href="contact-us.htm">تواصل معنا</a></li>
+        </ul>
+        <div class="log-btn">
+            <button id="logout" class="logout">تسجيل الخروج</button>
         </div>
-      </div>
+         <!-- زر القائمة (☰) -->
+         <div class="menu-toggle">&#9776;</div>
+  </div> 
+
+  <div class="details-container">
+    <div class="title">
+        <i class="fa-solid fa-arrow-right" onclick="window.location.href='my-request.htm'" ></i>
+        تفاصيل الحالة
     </div>
+    <div class="details-header">
+      <span class="badge urgent" id="help-badge"></span>
+      <img id="detail-img" src="" alt="صورة الحالة">
+      <p style="padding-bottom: 10px;" id="request-status"> </p>
+    </div>
+
+    <div class="title-row">
+      <h2 id="detail-title">عنوان الحالة</h2>
+      <div class="meta total" id="detail-progress-text"></div>
+    </div>
+
+    <div class="meta" id="detail-category">(فئة المساعدة)</div>
+    <div class="meta date" id="detail-date"></div>
+
+    <div class="progress-bar">
+      <div class="progress-bar-fill" id="detail-progress-bar"></div>
+    </div>
+
+    <p class="description" id="detail-desc"></p>
+
+    <p class="text">كل مساهمة، مهما كانت بسيطة، تقرّب هذه الحلة الى هدفها وتمنحها فرصة لحياة أفضل.</p>
+
+      
+    <div class="attachment">
+        <h3>ملفات الإثبات</h3>
+        <p class="note">تم إرفاق المستندات التالية من صاحب الحالة لتأكيد احتياجه:</p>
+        <div id="proof-files-container" class="proof-files-container">
+         <div><a href="#" target="_blank">تقرير عن الحالة - حالة طارئة.pdf</a></div> -->
+        </div>
+    </div>
+    
+    <div class="share-section">
+                <p class="share-title">أو يمكنك أن تشارك الحالة مع أصدقائك</p>
+                <div class="share-icons">
+                  <a href="#" class="icon facebook" title="شارك على فيسبوك" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" class="icon whatsapp" title="شارك على واتساب" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                  <a href="#" class="icon x" title="شارك على X" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                </div>
+    </div>   
+    <div class="donors">
+        <strong>آخر المساهمين:</strong>
+        <ul id="donors-list">
+          <!-- سيتم تعبئته ديناميكياً -->
+        </ul>
+    </div>
+      
   </div>
 
-  <script src="js/request-details.js"></script>
+<!-- Modal لتكبير الصورة مع التنقل -->
+<div id="image-modal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modal-img">
+    <a class="prev">&#10094;</a>
+    <a class="next">&#10095;</a>
+</div>
+
+  <div class="footer">
+      <div class="text">
+          <div class="logo">
+              <img src="img/Group.png" alt="logo">
+              <h4>وصال</h4>
+          </div>
+          <div class="content">
+              منصة إنسانية تهدف لربط المتبرعين بالعائلات المحتاجة بطريقة شفافة، سهلة، وآمنة.<br> نعمل على تسهيل إيصال التبرعات بمختلف أشكالها لمن هم في أمسّ الحاجة، ونؤمن أن كل مساعدة، مهما كانت بسيطة، قادرة على صناعة فرق حقيقي.
+          </div>
+      </div>
+      <div class="links">
+          <div class="box">
+              <h4>الروابط السريعة</h4>
+              <a href="landing.htm">الرئيسية</a>
+              <a href="availabe.htm">المساعدات المتاحة</a>
+              <a href="how.htm">كيف يعمل الموقع</a>
+              <a href="volunteer.html">تطوع معنا </a>
+              <a href="reqHelp.htm">طلب المساعدة</a>
+              <a href="us.html">من نحن؟</a>
+          </div>
+          <div class="box">
+              <h4>الشروط والسياسات</h4>
+              <a href="">الشروط والأحكام</a>
+              <a href="">سياسية الخصوصية</a>
+              <a href="">سياسية ملفات تعريف الارتباط</a>
+              <a href="commonQues.htm">الأسئلة الشائعة</a>
+          </div>
+          <div class="box">
+              <h4>مواقع التواصل الاجتماعي</h4>
+              <div class="social">
+                  <a href=""><i class="fa-brands fa-facebook-f"></i></a>
+                  <a href=""><i class="fa-brands fa-instagram"></i></a>
+                  <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+              </div>
+          </div>
+      </div>
+      <div class="foot">
+          جميع الحقوق محفوظة لمنصة وصال &copy; 2025
+      </div>
+  </div>  
+
+  <script src="js/header.js"></script>
+  <script src="js/requests-data.js"></script>
+  <script src="js/request-details.js"></script>  
 </body>
 </html>
 
 
-<!-- اه ياريت بس قبل بدي اسالك هلا البيانات الموحدة اللي هعملها اخليها في صفحة لحال طيب اخلي في نفس الصفحة هاي اعمل حفظ في الlocalStorage او Query Params: ولا في الصفحة اللي بدي البيانات فيها اعمل هيك فاهم علي ؟؟؟ وبعد ما ترد علي وافهم  انا  بعدها ما تنسى نعمل  "زر المعاينة" في صفحة "طلباتي"  ولو بدي صفحة طلباتي اصلا هي كمان بدها تعديل لتكون برضو البيانات ديناميكية برضو وضحلي برضو امانة وان شاء الله تكون فاهم علي  -->
+

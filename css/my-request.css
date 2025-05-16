@@ -119,6 +119,12 @@ body {
     background-color: #1A6C9E;
     height: 100%;
 }
+.progress-bar-fill {
+  background-color: #1A6C9E; /* أو أي لون تحبيه */
+  height: 100%;
+  width: 0%;
+  transition: width 0.5s ease-in-out;
+}
 
 /* .request-status {
   margin-bottom: 10px;
@@ -137,10 +143,12 @@ body {
 
 .request-status {
   display: inline-block;
-  padding: 5px 10px;
+  padding:  10px;
   border-radius: 20px;
   background-color: #eee;
   font-size: 13px;
+  margin-bottom: 10px;
+  font-weight: 600;
 }
 .request-status.pending {
   background-color: #fff3cd;

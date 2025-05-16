@@ -1,85 +1,130 @@
-const filterButtons = document.querySelectorAll(".filter-btn");
-const cards = document.querySelectorAll(".request-card");
+// التحقق من تسجيل الدخول
+document.addEventListener("DOMContentLoaded", () => {
+  const currentUserEmail = localStorage.getItem("tempEmail");
 
-// فعّل زر "الكل" تلقائيًا عند بداية التحميل
-document.querySelector('[data-filter="all"]')?.classList.add("active");
+  if (!currentUserEmail) {
+    alert("يجب تسجيل الدخول أولاً");
+    window.location.href = "login.html";
+    return;
+  }
 
-filterButtons.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    // شيل الكلاس active من جميع الأزرار وأضفه للزر الحالي
-    filterButtons.forEach((b) => b.classList.remove("active"));
-    btn.classList.add("active");
+  let allRequests = JSON.parse(localStorage.getItem("aidRequests")) || [];
 
-    const filter = btn.getAttribute("data-filter");
+  const myRequests = allRequests.filter(
+    (req) => req.ownerEmail === currentUserEmail
+  );
 
-    cards.forEach((card) => {
-      const status = card.getAttribute("data-status");
-      if (!status) return;
+  const container = document.getElementById("my-requests-container");
 
-      if (filter === "all" || status === filter) {
-        card.classList.remove("hidden");
-        card.classList.add("fade-in");
-        setTimeout(() => card.classList.remove("fade-in"), 300); // يشيل الأنميشن بعد شوي
-      } else {
-        card.classList.add("hidden");
+  if (myRequests.length === 0) {
+    container.innerHTML = "<p>لم تقم بإضافة أي طلبات بعد.</p>";
+    return;
+  }
+
+  myRequests.forEach((request) => {
+    const card = document.createElement("div");
+    const isFinished = request.goal == request.collected;
+    const percentage = Math.min((request.collected / request.goal) * 100, 100);
+
+    card.className = "request-card";
+    card.setAttribute("data-status", isFinished ? "finished" : "pending");
+    card.setAttribute("data-id", request.id); // نحتاج هذا للحذف والتعديل
+
+    card.innerHTML = `
+      <img src="${request.img}" alt="صورة الطلب">
+      <div class="request-content">
+        <div class="request-title">${request["card-title"]}</div>
+        <div class="request-desc">${request["card-desc"]}</div>
+        <div class="request-type">${request["card-category"]}</div>
+        <div class="request-amount">تم جمع ${request.collected}$ من أصل ${
+      request.goal
+    }$</div>
+        <div class="progress-bar">
+          <div class="progress" style="width: ${percentage}%"></div>
+        </div>
+        <div class="request-status ${isFinished ? "finished" : "pending"}">
+          الحالة: ${isFinished ? "منتهية" : "قيد الانتظار"}
+        </div>
+        <p><strong>التاريخ:</strong> ${request.date || "غير محدد"}</p>
+      </div>
+      <div class="request-actions">
+        <button class="btn-view">عرض التفاصيل</button>
+        <button class="btn-edit">تعديل</button>
+        <button class="btn-delete">حذف</button>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  document.querySelector('[data-filter="all"]')?.classList.add("active");
+
+  filterButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      filterButtons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const filter = btn.getAttribute("data-filter");
+      const cards = document.querySelectorAll(".request-card");
+
+      cards.forEach((card) => {
+        const status = card.getAttribute("data-status");
+
+        if (filter === "all" || status === filter) {
+          card.classList.remove("hidden");
+          card.classList.add("fade-in");
+          setTimeout(() => card.classList.remove("fade-in"), 300);
+        } else {
+          card.classList.add("hidden");
+        }
+      });
+    });
+  });
+
+  // زر عرض التفاصيل
+  document.querySelectorAll(".btn-view").forEach((button) => {
+    button.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const card = button.closest(".request-card");
+      const requestId = card.getAttribute("data-id");
+      const currentReq = myRequests.find((req) => req.id == requestId);
+
+      if (currentReq) {
+        localStorage.setItem("selectedRequest", JSON.stringify(currentReq));
+        localStorage.setItem("viewSource", "needy");
+        window.location.href = `request-details.html?id=${requestId}`;
       }
     });
   });
-});
 
-// لزر المعاينة
-
-// استهداف كل أزرار المعاينة
-document.querySelectorAll(".btn-view").forEach((button) => {
-  button.addEventListener("click", (e) => {
-    e.stopPropagation(); // لمنع التفاعل مع الكرت نفسه إذا فيه onclick
-    const card = button.closest(".request-card");
-    const requestId = card.getAttribute("data-id");
-
-    // حفظ ID في localStorage أو الانتقال مع query parameter
-    window.location.href = `help-details.html?id=${requestId}`;
-  });
-});
-
-// زر الحذف
-// استهداف كل أزرار الحذف
-document.querySelectorAll(".btn-delete").forEach((button) => {
-  button.addEventListener("click", (e) => {
-    e.stopPropagation(); // عشان ما يفتح تفاصيل الكرت
-
-    const confirmed = confirm("هل أنت متأكد من حذف هذه المساعدة؟");
-    if (confirmed) {
+  // زر الحذف
+  document.querySelectorAll(".btn-delete").forEach((button) => {
+    button.addEventListener("click", (e) => {
+      e.stopPropagation();
       const card = button.closest(".request-card");
+      const requestId = card.getAttribute("data-id");
 
-      // إزالة الكرت من الصفحة
-      card.remove();
+      const confirmed = confirm("هل أنت متأكد من حذف هذه المساعدة؟");
+      if (confirmed) {
+        // حذف من localStorage
+        allRequests = allRequests.filter((req) => req.id != requestId);
+        localStorage.setItem("allRequests", JSON.stringify(allRequests));
 
-      // في المستقبل: إرسال طلب حذف إلى السيرفر باستخدام fetch
-      // const requestId = card.getAttribute("data-id");
-      // fetch(`/api/delete-help?id=${requestId}`, { method: "DELETE" });
-    }
+        // حذف من الصفحة
+        card.remove();
+      }
+    });
+  });
+
+  // زر التعديل
+  document.querySelectorAll(".btn-edit").forEach((button) => {
+    button.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const card = button.closest(".request-card");
+      const requestId = card.getAttribute("data-id");
+
+      window.location.href = `edit-request.htm?id=${requestId}`;
+    });
   });
 });
-
-//  زر التعديل
-document.querySelectorAll(".btn-edit").forEach((button) => {
-  button.addEventListener("click", (e) => {
-    e.stopPropagation(); // منع تفاعل الكرت الأساسي
-
-    const card = button.closest(".request-card");
-    const requestId = card.getAttribute("data-id");
-
-    // الانتقال لصفحة التعديل مع تمرير المعرف
-    window.location.href = `edit-help.htm?id=${requestId}`;
-  });
-});
-
-document.querySelectorAll(".btn-view").forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    localStorage.setItem("selectedRequest", JSON.stringify(cards));
-    window.location.href = "../request-details.html";
-  });
-});
-
-// يعني  الarray اللي هعملها في صفحة طلباتي واحفظها في localStorage كيف استدعي البيانات في صفحة "المساعدات المتاحة" (للمتبرع). وكذلك لما برضو يدعس على زر التفاصيل في صفحة المساعدات المتاحة اي كيف اخلي كل هاي الصفحات تيجي من نفس المصفوفة ونفس الlocalstorage ???

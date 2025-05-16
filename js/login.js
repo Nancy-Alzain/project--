@@ -24,6 +24,7 @@ form.addEventListener("submit", function (e) {
 
   const email = emailInput.value.trim();
   const password = passwordInput.value;
+  localStorage.setItem("currentUserEmail", email);
 
   //التحقق إذا الحقول فاضية
   if (!email || !password) {
@@ -95,6 +96,7 @@ function handleGoogleLogin(response) {
   // فك تشفير التوكن لجلب معلومات المستخدم
   const userData = parseJwt(jwt);
   const email = userData.email;
+  localStorage.setItem("currentUserEmail", userData.email);
 
   // إرسال البريد للباك-إند لتسجيل الدخول
   fetch("https://your-backend-url.com/api/login-google", {

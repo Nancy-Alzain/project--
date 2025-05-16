@@ -53,7 +53,10 @@ function handleRegister(event) {
 
   // نحفظ البريد مؤقتًا لاستخدامه في صفحة sure
   localStorage.setItem("tempEmail", email);
-
+  localStorage.setItem("currentUserEmail", email);
+  if (selectedUserType === "donor") {
+    localStorage.setItem("userName", name);
+  }
   // نحفظ نوع المستخدم (donor / needy / admin)
   localStorage.setItem("userType", selectedUserType); // تأكدي من وجود هذا المتغير لديك
 
@@ -97,7 +100,10 @@ function handleCredentialResponse(response) {
 
   // حفظ البريد الإلكتروني في localStorage لاستخدامه لاحقًا في صفحة التحقق
   localStorage.setItem("tempEmail", data.email);
-  localStorage.setItem("userName", data.name);
+  localStorage.setItem("currentUserEmail", data.email);
+  if (selectedUserType === "donor") {
+    localStorage.setItem("userName", data.name);
+  }
   localStorage.setItem("userType", selectedUserType);
   localStorage.setItem("resetMode", "false");
 

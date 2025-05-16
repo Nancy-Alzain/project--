@@ -39,6 +39,7 @@ session_start();
                 <li><a href="landing.htm">الرئيسية</a></li>
                 <!-- <li><a href="availabe.htm">المساعدات المتاحة</a></li> -->
                 <li><a href="how.htm">كيف يعمل الموقع</a></li>
+                <li><a href="volunteer.html">تطوع معنا </a></li>
                 <!-- <li><a href="giveHelp.htm">تقديم المساعدة</a></li>
                 <li><a href="reqHelp.htm">طلب المساعدة</a></li> -->
                 <li><a href="us.html">من نحن؟</a></li>

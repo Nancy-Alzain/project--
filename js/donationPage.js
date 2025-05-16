@@ -1,13 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // لتحميل الكارد
+  const selectedRequest = JSON.parse(localStorage.getItem("selectedRequest"));
 
-  let cardData;
-  try {
-    const storedData = localStorage.getItem("cardsData");
-    cardData = JSON.parse(storedData);
-    if (!cardData) throw new Error();
-  } catch (e) {
-    alert("حدث خطأ أثناء تحميل البيانات.");
+  // التأكد من وجود البيانات
+  if (!selectedRequest) {
+    alert("عذرًا، لم يتم تحديد حالة للتبرع.");
     window.location.href = "availabeHelp.htm";
   }
 
@@ -26,9 +22,9 @@ document.addEventListener("DOMContentLoaded", function () {
     badge.textContent = caseData.name;
     badge.classList.add(caseData.type || "default-type");
   }
-  updateHeaderDon(cardData);
+  updateHeaderDon(selectedRequest);
 
-  // لاضافة المبلغ
+  // عند إدخال مبلغ التبرع
   const donationInput = document.querySelector(".donation-amount input");
   const donationValueSpan = document.getElementById("donation-value");
   const totalValueSpan = document.getElementById("total-value");
@@ -66,12 +62,38 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("المبلغ:", amount);
     console.log("طريقة الدفع:", paymentMethod);
 
-    // عرض رسالة نجاح
+    const request = JSON.parse(localStorage.getItem("selectedRequest"));
+    if (request) {
+      // تحديث قيمة collected
+      request.collected = (request.collected || 0) + amount;
+
+      // إضافة المساهم إلى مصفوفة donors
+      if (!Array.isArray(request.donors)) request.donors = [];
+
+      // الحصول على اسم المتبرع من localStorage أو وضع اسم افتراضي
+      const donorName = localStorage.getItem("userName") || "متبرع مجهول";
+
+      request.donors.push({
+        name: donorName,
+        amount: amount.toFixed(2),
+        date: new Date().toISOString(),
+      });
+      // ✅ تحديث الطلب داخل مصفوفة الطلبات في localStorage
+      const allRequests = JSON.parse(localStorage.getItem("aidRequests")) || [];
+      const updatedRequests = allRequests.map((req) => {
+        if (req.id === request.id) {
+          return request;
+        }
+        return req;
+      });
+      localStorage.setItem("aidRequests", JSON.stringify(updatedRequests));
+      // حفظ التحديثات
+      localStorage.setItem("donatedAmount", amount);
+      localStorage.setItem("selectedRequest", JSON.stringify(request));
+    }
+
     showDonationMessage("success", "تم إرسال التبرع بنجاح!");
-    setTimeout(
-      () => (window.location.href = "../succPay.html"), // إعادة توجيه إلى صفحة التبرع
-      1000
-    );
+    setTimeout(() => (window.location.href = "../succPay.html"), 1000);
   });
 });
 
@@ -88,11 +110,13 @@ function showDonationMessage(type, text) {
 }
 
 // عند النقر على اي وسيلة دفع
+let selectedMethod = "";
 document.querySelectorAll(".payment-option").forEach((option) => {
   option.addEventListener("click", function () {
     document
       .querySelectorAll(".payment-option")
       .forEach((o) => o.classList.remove("selected"));
     this.classList.add("selected");
+    selectedMethod = option.dataset.method;
   });
 });

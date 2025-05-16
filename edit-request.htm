@@ -1,24 +1,25 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>طلب المساعدة</title>
+    <title>تفاصيل حالة الطلب </title>
     <!-- Normalize  File  -->
     <link rel="stylesheet" href="css/normalize.css">
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Open+Sans:wdth,wght@75..100,300..800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Open+Sans:wdth,wght@75..100,300..800&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <!-- CSS File -->
     <link rel="stylesheet" href="css/header&footer.css">
-    <link rel="stylesheet" href="css/my-request.css">
+    <link rel="stylesheet" href="css/help-details.css">
+     <link rel="stylesheet" href="css/edit-help.css">
+     
 </head>
 <body>
   <div class="header">
@@ -43,61 +44,77 @@
       <!-- زر القائمة (☰) -->
       <div class="menu-toggle">&#9776;</div>
   </div>
-
   <div class="container">
-    <h1 class="page-title">طلباتي</h1>
-
-    <div class="filter-buttons">
-      <button class="filter-btn active" data-filter="all">كل طلباتي</button>
-      <button class="filter-btn" data-filter="pending">قيد الانتظار</button>
-      <button class="filter-btn" data-filter="finished">منتهية</button>
+    <div class="title">
+        <i class="fa-solid fa-arrow-right" onclick="window.location.href='my-request.htm'" ></i>
+        تعديل الحالة
     </div>
+    <h2 class="page-title">تعديل طلب المساعدة</h2>
+    <form id="edit-help-form">
+  <label for="title">عنوان المساعدة:</label>
+  <input type="text" id="title" name="title" required>
 
-    <div class="cards-container" id="my-requests-container">
-      <!-- اول كرتين مثال كيف هتظهر الكروت  -->
-      <!-- <div class="request-card" data-status="pending">
-        <img src="img/Photo (6).png" alt="صورة الطلب">
-        <div class="request-content">
-          <div class="request-title">مساعدة في شراء أدوية مزمنة</div>
-          <div class="request-desc">يعيش عدد من المرضى المزمنين داخل المخيم أوضاعًا صحية</div>
-          <div class="request-type">مساعدة صحية</div>
-          <div class="request-amount">تم جمع  500$ من أصل 1000$</div>
-          <div class="progress-bar">
-            <div class="progress" style="width: 60%"></div>
-          </div>
-          <div class="request-status pending">الحالة: قيد الانتظار</div>
-        </div>  
-        <div class="request-actions">
-            <button class="btn-view">عرض التفاصيل</button>
-            <button class="btn-edit">تعديل</button>
-            <button class="btn-delete">حذف</button>
-          </div>
-      </div> -->
-
-      <!-- <div class="request-card" data-status="finished">
-        <img src="img/Photo (3).png" alt="صورة الطلب">
-        <div class="request-content">
-          <div class="request-title">مساعدة في توفير ملابس شتوية</div>
-          <div class="request-desc">الأطفال لا يملكون ما يقيهم برد الشتاء ويحتاجون أحذية ومعاطف</div>
-          <div class="request-type">مساعدة ملابس</div>
-          <div class="request-amount">تم جمع  1000$ من أصل 1000$</div>
-          <div class="progress-bar">
-            <div class="progress" style="width: 100%"></div>
-          </div>
-          <div class="request-status finished">الحالة: منتهية</div>
-        </div>          
-        <div class="request-actions">
-            <button class="btn-view">عرض التفاصيل</button>
-            <button class="btn-edit">تعديل</button>
-            <button class="btn-delete">حذف</button>
-          </div>
-      </div> -->
+  <!-- صورة الحالة الحالية -->
+  <div id="current-image-preview" style="margin-bottom: 10px;"></div>
 
 
-    </div>
+  <label for="image">صورة جديدة (اختياري):</label>
+  <input type="file" id="image" name="image" accept="image/*" />
+
+  <label for="type">نوع المساعدة:</label>
+  <select id="type" name="type">
+    <option value="food">غذاء</option>
+    <option value="medicine">طبية</option>
+    <option value="clothes">ملابس</option>
+    <option value="money">نقود</option>
+    <option value="أخرى">أخرى</option>
+  </select>
+
+  <label for="amount">المبلغ المطلوب:</label>
+  <input type="number" id="amount" name="amount" required>
+
+  <label for="priority">أولوية الحالة:</label>
+  <select id="priority" name="priority">
+    <option value="high">عاجلة</option>
+    <option value="medium">متوسطة</option>
+    <option value="low">عادية</option>
+  </select>
+
+  <label for="status">حالة الطلب:</label>
+  <select id="status" name="status">
+    <option value="new">جديد</option>
+    <option value="pending">قيد المراجعة</option>
+    <option value="active">مفعل</option>
+    <option value="closed">مغلق</option>
+  </select>
+
+  <label for="description">وصف الحالة:</label>
+  <textarea id="description" name="description" rows="4" required></textarea>
+  
+  <!-- ملف الإثبات الحالي -->
+  <div id="current-proof-preview" style="margin-bottom: 10px;">
+    <p>ملف الإثبات الحالي:</p>
+    <a href="${selectedRequest.proofFiles}" target="_blank" style="color: blue; text-decoration: underline;">
+      📄 عرض ملف الإثبات
+    </a>
   </div>
+  <!-- <div id="current-proof-preview" class="file-preview" style="margin-bottom: 10px;"></div> -->
 
-  <div class="footer">
+<div class="form-group">
+  <label for="replaceProof">📎 استبدال ملف الإثبات (اختياري):</label>
+  <input type="file" id="replaceProof" name="replaceProof" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx">
+</div>
+
+<div class="form-group">
+  <label for="addProof">📎 ملف إثبات جديد (اختياري):</label>
+  <input type="file" id="addProof" name="addProof" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" multiple>
+</div>
+
+  <button type="submit">💾 حفظ التعديلات</button>
+</form>
+
+  </div>
+    <div class="footer">
       <div class="text">
           <div class="logo">
               <img src="img/Group.png" alt="logo">
@@ -139,7 +156,7 @@
   </div>
   <script src="js/header.js"></script>
   <script src="js/requests-data.js"></script>
-  <script src="js/my-request.js"></script>
+  <script src="js/edit-request.js"></script>
 </body>
-
 </html>
+

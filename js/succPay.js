@@ -1,55 +1,71 @@
-// عند الضغط على زر "التبرع مرة أخرى" يتم إرسال المستخدم إلى صفحة "المساعدات المتاحة" مرة أخرى
-document.querySelector(".donate").addEventListener("click", () => {
-  window.location.href = "../availabeHelp.htm"; // إعادة توجيه إلى صفحة التبرع
-});
+document.addEventListener("DOMContentLoaded", () => {
+  const caseTitle = document.querySelector(".case-title");
+  const collected = document.querySelector(".collected");
+  const progress = document.querySelector(".progress");
+  const statusBadge = document.querySelector(".status-badge");
+  const caseImage = document.querySelector(".case-details img");
 
-let modal = document.querySelector(".modal");
-//   زر لاغلاق النافذة
-const span = document.querySelector(".close");
+  const donateAgainBtn = document.querySelector(".donate");
+  const shareBtn = document.querySelector(".btn.share");
+  const modal = document.querySelector(".modal");
+  const closeModal = document.querySelector(".modal .close");
 
-document.querySelector(".share").onclick = function (event) {
-  event.preventDefault();
-  modal.style.display = "block";
-};
-//عند الضغط على زر X يتم إغلاق المودال
-span.onclick = function () {
-  modal.style.display = "none";
-};
-//إذا ضغط المستخدم خارج المودال، يتم إغلاقه
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+  // جلب بيانات الحالة من التخزين
+  const selectedCase = JSON.parse(localStorage.getItem("selectedRequest"));
+  const donatedAmount = localStorage.getItem("donatedAmount") || 0;
+
+  if (!selectedCase) {
+    alert("حدث خطأ أثناء تحميل البيانات.");
+    window.location.href = "availabeHelp.htm";
   }
-};
 
-// عند النقر على ازار المواقع لمشاركة الحالة مع الاصدقاء
-document.addEventListener("DOMContentLoaded", function () {
-  const pageUrl = encodeURIComponent(window.location.href);
-  const shareText = encodeURIComponent("تفاصيل مساعدة مهمة! شاهدوها الآن 👇");
+  caseTitle.textContent = selectedCase["card-title"];
+  collected.textContent = `$${selectedCase.collected} تم جمعه من أصل $${selectedCase.goal}`;
+  progress.style.width = `${
+    (selectedCase.collected / selectedCase.goal) * 100
+  }%`;
+  caseImage.src = selectedCase.img;
+  statusBadge.classList.add(
+    selectedCase.collected == selectedCase.goal ? "finished" : "pending"
+  );
+  statusBadge.textContent = selectedCase.status;
 
-  // روابط المشاركة
-  const facebookLink = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
-  const whatsappLink = `https://wa.me/?text=${shareText}%20${pageUrl}`;
-  const xLink = `https://twitter.com/intent/tweet?text=${shareText}%20${pageUrl}`;
+  // عند الضغط على زر "تبرع مرة أخرى"
+  donateAgainBtn.addEventListener("click", () => {
+    window.location.href = "../availabeHelp.htm"; // إعادة توجيه إلى صفحة المساعدات الحالية
+  });
+  // // عند النقر على ازار المواقع لمشاركة الحالة مع الاصدقاء
+  // تهيئة روابط المشاركة
+  const shareURL = encodeURIComponent(window.location.href);
+  const shareText = encodeURIComponent(
+    `أدعوكم للمساهمة في هذه الحالة: ${selectedCase.title}`
+  );
 
-  // ضبط الروابط على الأيقونات
-  document.querySelector(".icon.facebook").href = facebookLink;
-  document.querySelector(".icon.whatsapp").href = whatsappLink;
-  document.querySelector(".icon.x").href = xLink;
+  document.querySelector(
+    ".facebook"
+  ).href = `https://www.facebook.com/sharer/sharer.php?u=${shareURL}`;
+  document.querySelector(
+    ".whatsapp"
+  ).href = `https://wa.me/?text=${shareText}%0A${shareURL}`;
+  document.querySelector(
+    ".x"
+  ).href = `https://twitter.com/intent/tweet?text=${shareText}&url=${shareURL}`;
+
+  // عند الضغط على زر "شارك الحالة"
+  shareBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    modal.style.display = "block";
+  });
+
+  // عند الضغط على زر إغلاق النافذة
+  closeModal.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  // إغلاق النافذة عند الضغط خارجها
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
 });
-
-// يتغير تلقائيا الفقرة الثالثة التي تحت الصورة
-// مثال على نوع المساعدة (ممكن تيجي من localStorage أو من API أو URL parameter)
-try {
-  const storedData = localStorage.getItem("cardsData");
-  cardData = JSON.parse(storedData);
-  if (!cardData) throw new Error();
-} catch (e) {
-  alert("حدث خطأ أثناء تحميل البيانات.");
-  window.location.href = "availabeHelp.htm";
-}
-
-// نحط الجملة في الصفحة
-document.querySelector(".detail-category").textContent =
-  cardData["desc-after-pay"] ||
-  "شكرًا لتبرعك الكريم، لقد كان له أثر عظيم في حياة المحتاجين.";

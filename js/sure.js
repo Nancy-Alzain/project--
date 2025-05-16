@@ -76,12 +76,12 @@ function verifyOTP() {
     } else {
       // من "تسجيل حساب جديد"
       const userType = localStorage.getItem("userType");
-      localStorage.removeItem("tempEmail");
+      // localStorage.removeItem("tempEmail");
 
       if (userType === "donor") {
-        window.location.href = "giveHelp.htm";
+        window.location.href = "../availabeHelp.htm";
       } else if (userType === "needy") {
-        window.location.href = "reqHelp.htm";
+        window.location.href = "../request-help.htm";
       } else if (userType === "admin") {
         window.location.href = "landing.htm";
       } else {

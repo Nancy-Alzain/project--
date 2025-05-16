@@ -39,3 +39,7 @@ let login = document.querySelector(".login");
 
 create.onclick = () => window.open("../sign-up.htm", "_self");
 login.onclick = () => window.open("../login.htm", "_self");
+
+// عند النقر على زر تسجيل الخروج الذهاب الى صفحة تسجيل الدخول
+let logout = document.querySelector(".logout");
+logout.addEventListener("click", () => window.open("../login.htm", "_self"));

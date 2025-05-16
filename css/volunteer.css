@@ -1,0 +1,83 @@
+body {
+  /* font-family: 'Cairo', sans-serif; */
+  background-color: #f0f4f8;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+.menu-toggle{
+  color: #1A6C9E;
+}
+.volunteer-section {
+  max-width: 700px;
+  margin: 60px auto 30px;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.volunteer-icon {
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+.volunteer-section h1 {
+  /* color: #2b7a78; */
+  color: #1A6C9E;
+  font-size: 2.2em;
+  margin-bottom: 20px;
+}
+
+.volunteer-section p {
+  font-size: 1.15em;
+  color: #333;
+  margin-bottom: 30px;
+  line-height: 1.8;
+}
+
+.volunteer-button {
+  background-color: #1e80bd;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease;
+}
+
+.volunteer-button:hover {
+  background-color: #1A6C9E;
+  cursor: pointer;
+}
+
+/* قسم الشهادات */
+.testimonials {
+  max-width: 700px;
+  margin: 20px auto 60px;
+  padding: 20px;
+}
+
+.testimonials h2 {
+  color: #17252a;
+  margin-bottom: 25px;
+  font-size: 1.8em;
+}
+
+.testimonial-box {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+}
+
+.testimonial-box p {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.testimonial-box span {
+  color: #555;
+  font-size: 0.95em;
+}

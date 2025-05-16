@@ -30,6 +30,7 @@
                 <li><a href="landing.htm">الرئيسية</a></li>
                 <li><a href="availabeHelp.htm">المساعدات المتاحة</a></li>
                 <li><a href="how.htm">كيف يعمل الموقع</a></li>
+                <li><a href="volunteer.html">تطوع معنا </a></li>
                 <li><a href="personalPage.htm">حسابي </a></li>
                 <li><a href="us.html">من نحن؟</a></li>
                 <li><a href="contact-us.htm">تواصل معنا</a></li>
@@ -65,10 +66,10 @@
 
     <p class="description" id="detail-desc"></p>
 
-    <p class="text">كل مساهمة، مهما كانت بسيطة، تقرّب رُبى من الشفاء وتمنحها فرصة لحياة أفضل.</p>
+    <p class="text">كل مساهمة، مهما كانت بسيطة، تقرّب الحالة من الوصول الى هدفها  ومنحها فرصة لحياة أفضل.</p>
     <!-- تفاصيل اضافية  -->
     <div class="extra-details">
-        <button class="toggle-btn" onclick="toggleExtraDetails()">
+        <button class="toggle-btn">
           تفاصيل إضافية <span id="arrow">▼</span>
         </button>
         <div class="extra-content" id="extra-content">
@@ -79,11 +80,10 @@
     <div class="attachment">
         <h3>ملفات الإثبات</h3>
         <p class="note">تم إرفاق المستندات التالية من صاحب الحالة لتأكيد احتياجه:</p>
-        <ul class="proof-files">
+        <div id="proof-files-container" class="proof-files-container">
           <!-- سيتم ملؤها ديناميكيًا لاحقًا -->
-          <!-- <li><a href="#" target="_blank">تقرير طبي - حالة طارئة.pdf</a></li>
-          <li><a href="#" target="_blank">صورة وصفة دواء.jpg</a></li> -->
-        </ul>
+          <!-- <div><a href="#" target="_blank">تقرير عن الحالة - حالة طارئة.pdf</a></div> -->
+        </div>
     </div>
       
     <div class="btn-text">
@@ -108,6 +108,14 @@
     </div>
       
   </div>
+  
+  <!-- Modal لتكبير الصورة مع التنقل -->
+  <div id="image-modal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="modal-img">
+      <a class="prev">&#10094;</a>
+      <a class="next">&#10095;</a>
+  </div>
 
   <div class="footer">
       <div class="text">
@@ -125,7 +133,7 @@
               <a href="landing.htm">الرئيسية</a>
               <a href="availabe.htm">المساعدات المتاحة</a>
               <a href="how.htm">كيف يعمل الموقع</a>
-              <a href="giveHelp.htm">تقديم المساعدة</a>
+              <a href="volunteer.html">تطوع معنا </a>
               <a href="reqHelp.htm">طلب المساعدة</a>
               <a href="us.html">من نحن؟</a>
           </div>
@@ -150,6 +158,7 @@
       </div>
   </div>
 <script src="js/header.js"></script>
+<script src="js/requests-data.js"></script>
 <script src="js/help-details.js"></script>
 </body>
 </html>
