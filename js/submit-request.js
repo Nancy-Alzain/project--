@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const goal = parseFloat(document.getElementById("goal").value);
     const priority = document.querySelector("#priority").value;
     const files = selectedFiles;
-    const extra = document.getElementById("type").value;
+    const extra = document.getElementById("extra").value;
 
     const newRequestData = {
       title,
