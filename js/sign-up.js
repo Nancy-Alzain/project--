@@ -55,7 +55,9 @@ function handleRegister(event) {
   localStorage.setItem("tempEmail", email);
   localStorage.setItem("currentUserEmail", email);
   if (selectedUserType === "donor") {
-    localStorage.setItem("userName", name);
+    localStorage.setItem("userNameDonor", name);
+  } else if (selectedUserType === "needy") {
+    localStorage.setItem("userNameNeedy", name);
   }
   // نحفظ نوع المستخدم (donor / needy / admin)
   localStorage.setItem("userType", selectedUserType); // تأكدي من وجود هذا المتغير لديك
@@ -103,6 +105,8 @@ function handleCredentialResponse(response) {
   localStorage.setItem("currentUserEmail", data.email);
   if (selectedUserType === "donor") {
     localStorage.setItem("userName", data.name);
+  } else if (selectedUserType === "needy") {
+    localStorage.setItem("userNameNeedy", data.name);
   }
   localStorage.setItem("userType", selectedUserType);
   localStorage.setItem("resetMode", "false");

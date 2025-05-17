@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة المحتاج</title>
+        <!-- Normalize  File  -->
+        <link rel="stylesheet" href="css/normalize.css">
+        <!-- Google Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Open+Sans:wdth,wght@75..100,300..800&display=swap" rel="stylesheet">
+        <!-- Font Awesome -->
+         <link rel="stylesheet" href="css/all.min.css">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+        <!-- CSS File -->
+        <link rel="stylesheet" href="css/header&footer.css">
+        <link rel="stylesheet" href="css/needy-dashboard.css" />
+</head>
+<body>
+  <div class="dashboard-container">
+    <h2 id="welcome-msg">مرحبًا، <span id="needy-name"></span> 👋</h2>
+
+    <div class="card-grid">
+      <div class="dashboard-card">
+        <h3>التبرعات المستلمة</h3>
+        <p id="donation-total">0 شيكل</p>
+      </div>
+
+      <div class="dashboard-card clickable" onclick="location.href='request-help.htm'">
+        <h3>تقديم طلب مساعدة</h3>
+        <p>املأ النموذج لطلب مساعدة جديدة</p>
+      </div>
+
+      <div class="dashboard-card clickable" onclick="location.href='my-request.htm'">
+        <h3>طلباتي السابقة</h3>
+        <p>عرض جميع طلباتك</p>
+      </div>
+
+      <div class="dashboard-card clickable" onclick="location.href='withdraw-request.html'">
+        <h3>طلب سحب مبلغ</h3>
+        <p>اسحب رصيدك المتوفر نقدًا أو عبر البنك</p>
+      </div>
+    </div>
+    <h3 class="section-title">📢 إشعاراتك</h3>
+    <div class="notification-header">
+    <button id="clear-notifications">🗑️ حذف الكل</button>
+    </div>
+    <div id="notifications" class="notification-list">
+    <!-- الإشعارات تظهر هنا -->
+    </div>
+
+</div>
+
+  <!-- <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    // استرداد البيانات من localStorage
+    
+    const user = JSON.parse(localStorage.getItem("currentNeedy")) || { name: "مستخدم" };
+    document.getElementById("needy-name").textContent = user.name;
+
+    const donations = JSON.parse(localStorage.getItem("donations")) || [];
+    const total = donations
+      .filter((d) => d.needyEmail === user.email)
+      .reduce((sum, d) => sum + d.amount, 0);
+    document.getElementById("donation-total").textContent = total + " شيكل";
+
+        // إشعارات تجريبية
+    const sampleNotifications = [
+    { message: "تمت الموافقة على طلب المساعدة رقم 124", date: "2025-05-15" },
+    { message: "وصلك تبرع بقيمة 150 شيكل", date: "2025-05-14" },
+    { message: "طلب السحب قيد المراجعة", date: "2025-05-13" },
+    ];
+
+    // تخزين مؤقت فقط لأول مرة
+    if (!localStorage.getItem("needyNotifications")) {
+    localStorage.setItem("needyNotifications", JSON.stringify(sampleNotifications));
+    }
+
+    let notifications = JSON.parse(localStorage.getItem("needyNotifications")) || [];
+    const notificationList = document.getElementById("notifications");
+
+    // عرض الإشعارات
+    function renderNotifications() {
+    notificationList.innerHTML = "";
+
+    if (notifications.length === 0) {
+        notificationList.innerHTML = "<p>لا توجد إشعارات حالياً.</p>";
+        return;
+    }
+
+    notifications.forEach((n, index) => {
+        const div = document.createElement("div");
+        div.className = "notification";
+        div.innerHTML = `
+        <p>${n.message}</p>
+        <span>${n.date}</span>
+        <button class="delete-btn" data-index="${index}">×</button>
+        `;
+        notificationList.appendChild(div);
+    });
+
+    // ربط زر الحذف بكل إشعار
+    const deleteBtns = document.querySelectorAll(".delete-btn");
+    deleteBtns.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+        const i = e.target.dataset.index;
+        notifications.splice(i, 1);
+        localStorage.setItem("needyNotifications", JSON.stringify(notifications));
+        renderNotifications();
+        });
+    });
+    }
+
+    renderNotifications();
+
+    // زر حذف الكل
+    const clearBtn = document.getElementById("clear-notifications");
+    clearBtn.addEventListener("click", () => {
+    if (confirm("هل أنت متأكد من حذف جميع الإشعارات؟")) {
+        notifications = [];
+        localStorage.removeItem("needyNotifications");
+        renderNotifications();
+    }
+    });
+
+});
+  </script> -->
+  <script> document.addEventListener("DOMContentLoaded", () => {
+     // استرداد الاسم والبريد من localStorage 
+     const userName = localStorage.getItem("userNameNeedy") || "مستخدم"; 
+     const userEmail = localStorage.getItem("tempEmail") || ""; 
+     // عرض الاسم في الصفحة 
+     document.getElementById("needy-name").textContent = userName; 
+     // حساب مجموع التبرعات لهذا المحتاج 
+     const donations = JSON.parse(localStorage.getItem("donations")) || []; 
+     const total = donations .filter((d) => d.needyEmail === userEmail).reduce((sum, d) => sum + d.amount, 0); 
+     document.getElementById("donation-total").textContent = total + " شيكل"; 
+     // إشعارات تجريبية (مرة واحدة فقط) 
+     const sampleNotifications = [ 
+     { message: "تمت الموافقة على طلب المساعدة رقم 124", date: "2025-05-15" }, 
+     { message: "وصلك تبرع بقيمة 150 شيكل", date: "2025-05-14" }, 
+     { message: "طلب السحب قيد المراجعة", date: "2025-05-13" }, 
+        ]; 
+    if (!localStorage.getItem("needyNotifications")){
+            localStorage.setItem("needyNotifications", 
+            JSON.stringify(sampleNotifications)); 
+        } 
+    let notifications = JSON.parse(localStorage.getItem("needyNotifications")) || []; 
+    const notificationList = document.getElementById("notifications"); 
+    // عرض الإشعارات 
+    function renderNotifications() { 
+        notificationList.innerHTML = ""; 
+        if (notifications.length === 0) { 
+            notificationList.innerHTML = "<p>لا توجد إشعارات حالياً.</p>"; 
+            return; 
+        } 
+        notifications.forEach((n, index) => { 
+            const div = document.createElement("div"); 
+            div.className = "notification"; 
+            div.innerHTML = ` 
+                <p>${n.message}</p> <span>${n.date}</span> 
+                <button class="delete-btn" data-index="${index}">×</button> `; 
+            notificationList.appendChild(div); }); 
+            // ربط زر الحذف 
+            const deleteBtns = document.querySelectorAll(".delete-btn"); 
+            deleteBtns.forEach((btn) => { 
+                btn.addEventListener("click", (e) => { 
+                    const i = e.target.dataset.index; 
+                    notifications.splice(i, 1); 
+                    localStorage.setItem("needyNotifications", JSON.stringify(notifications)); 
+                    renderNotifications(); 
+                }); 
+            });
+        } 
+        renderNotifications(); 
+        // زر حذف كل الإشعارات 
+        const clearBtn = document.getElementById("clear-notifications"); 
+        clearBtn.addEventListener("click", () => { 
+            if (confirm("هل أنت متأكد من حذف جميع الإشعارات؟")) { 
+                notifications = []; 
+                localStorage.removeItem("needyNotifications"); 
+                renderNotifications(); 
+                } 
+                }); 
+                }); 
+</script>
+</body>
+</html>

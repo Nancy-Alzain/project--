@@ -1,0 +1,124 @@
+body {
+  /* font-family: 'Cairo', sans-serif; */
+  background-color: #f5f7fa;
+  margin: 0;
+  padding: 0;
+  direction: rtl;
+}
+
+.withdraw-container {
+  width: 85%;
+  max-width: 800px;
+  margin: 50px auto;
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+.withdraw-container .title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.title i {
+  background-color: #333;
+  color: #fff;
+  font-size: 15px;
+  padding: 7px 8px;
+  border-radius: 10px;
+  margin-right: 5px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.withdraw-container h2 {
+    text-align: center;
+    color: #1A6C9E;
+    margin-bottom: 25px;
+    font-size: 30px;
+}
+
+.withdraw-container p:first-of-type {
+    font-size: 18px;
+    color: #444;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 7px;
+}
+p.text {
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+    color: #1A6C9E;
+    font-weight: 500;
+    margin-top: 20px;
+}
+.withdraw-container p strong {
+    color: #1A6C9E;
+}
+.withdraw-container label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #1A6C9E;
+}
+
+.withdraw-container input,
+.withdraw-container select {
+    width: 100%;
+    padding: 20px;
+    border: none;
+    /* border: 1px solid #ccc; */
+    background-color: #f9f9f9;
+    border-radius: 7px;
+    font-size: 15px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.withdraw-container input:focus,
+.withdraw-container select:focus {
+    border: 1px solid #1A6C9E;
+    outline: none;
+}
+
+#withdraw-message {
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#submit-btn {
+  margin-top: 25px;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #0e80c6;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: 500;
+}
+
+#submit-btn:hover {
+  background-color: #1A6C9E;
+}
+
+#bank-fields,
+#wallet-fields {
+  margin-top: 10px;
+  padding: 15px;
+  background-color: #f1f6f9;
+  border-radius: 10px;
+  border: 1px solid #d0e0e6;
+}
+
+::placeholder {
+  color: #aaa;
+}

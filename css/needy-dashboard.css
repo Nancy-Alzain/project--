@@ -1,0 +1,110 @@
+body {
+  font-family: 'Cairo', sans-serif;
+  background-color: #f4f6f8;
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard-container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-container h2 {
+  text-align: center;
+  color: #2d2d2d;
+  margin-bottom: 30px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+
+.dashboard-card {
+  background-color: #f1f7f4;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  transition: 0.3s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.dashboard-card h3 {
+  margin-bottom: 10px;
+  color: #1A6C9E;
+}
+
+.dashboard-card p {
+  color: #444;
+  font-size: 15px;
+}
+
+.dashboard-card.clickable {
+  cursor: pointer;
+}
+
+.dashboard-card.clickable:hover {
+  background-color: #e0f4ea;
+  transform: translateY(-4px);
+}
+.notification-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+#clear-notifications {
+  background-color: #e84e4e;
+  color: white;
+  padding: 5px 10px;
+  font-size: 13px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#clear-notifications:hover {
+  background-color: #cc3b3b;
+}
+
+.notification .delete-btn {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: #d62828;
+  font-size: 16px;
+  cursor: pointer;
+}
+h3.section-title {
+    margin-top: 30px;
+}
+.notification {
+  position: relative;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 12px 40px 12px 12px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+}
+
+.notification .delete-btn {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: #d62828;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
+}

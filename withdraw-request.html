@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلب سحب التبرع</title>
+    <!-- Normalize  File  -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Open+Sans:wdth,wght@75..100,300..800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- CSS File -->
+    <link rel="stylesheet" href="css/header&footer.css">
+    <link rel="stylesheet" href="css/withdraw-request.css" />
+</head>
+
+<body>
+    <div class="header">
+        <a class="logo" href="">
+            <img src="img/Group.png" alt="logo">
+            <h3>وصال</h3>
+        </a>
+        <ul class="links">
+            <li><a href="landing.htm">الرئيسية</a></li>
+            <li><a href="how.htm">كيف يعمل الموقع</a></li>
+            <li><a href="volunteer.html">تطوع معنا </a></li>
+            <li><a href="my-request.htm">طلباتي</a></li>
+            <li><a href="withdraw-request.html">سحب تبرعاتي</a></li>
+            <li><a href="request-help.htm">طلب المساعدة</a></li>
+            <li><a href="us.html">من نحن؟</a></li>
+            <li><a href="contact-us.htm">تواصل معنا</a></li>
+        </ul>
+        <div class="log-btn">
+            <button id="logout" class="logout">تسجيل الخروج</button>
+        </div>
+        <!-- زر القائمة (☰) -->
+        <div class="menu-toggle">&#9776;</div>
+    </div>
+
+    <div class="withdraw-container">
+    <div class="title">
+        <i class="fa-solid fa-arrow-right" onclick="window.location.href='needy-dashboard.htm'" ></i>
+        مساعداتي المستلمة
+    </div>
+    <h2>طلب سحب المبلغ</h2>
+
+    <p>إجمالي التبرعات المتاحة: <strong id="total-donations">0 شيكل</strong></p>
+    <p class="text">يتم تعليق المبلغ لمدة 7 أيام بعد استلام كل تبرع لضمان المراجعة والتوثيق الكامل.
+    سيتم عرض المبلغ المتاح للسحب تلقائيًا بعد انتهاء المدة.</p>
+
+    <label for="withdraw-amount">المبلغ المطلوب:</label>
+    <input type="number" id="withdraw-amount" placeholder="أدخل المبلغ">
+
+    <p id="withdraw-message" style="color: red;"></p>
+
+    <label for="method-select">اختر طريقة السحب:</label>
+    <select id="method-select">
+        <option value="">-- اختر --</option>
+        <option value="cash">سحب نقدي</option>
+        <option value="bank">تحويل بنكي</option>
+        <option value="wallet">محفظة رقمية</option>
+    </select>
+
+    <!-- الحقول البنكية -->
+    <div id="bank-fields" style="display: none;">
+        <label for="bank-name">اسم البنك:</label>
+        <input type="text" id="bank-name" placeholder="مثال: بنك فلسطين">
+
+        <label for="account-number">رقم الحساب:</label>
+        <input type="text" id="account-number" placeholder="أدخل رقم الحساب">
+
+        <label for="account-holder">اسم صاحب الحساب:</label>
+        <input type="text" id="account-holder" placeholder="اسم صاحب الحساب">
+    </div>
+
+    <!-- الحقول لمحفظة رقمية -->
+    <div id="wallet-fields" style="display: none;">
+        <label for="wallet-type">نوع المحفظة:</label>
+        <input type="text" id="wallet-type" placeholder="مثال: Jawwal Pay أو PalPay">
+
+        <label for="wallet-number">رقم المحفظة:</label>
+        <input type="text" id="wallet-number" placeholder="أدخل رقم المحفظة">
+    </div>
+
+    <button id="submit-btn">إرسال الطلب</button>
+    </div>
+
+  <div class="footer">
+        <div class="text">
+            <div class="logo">
+                <img src="img/Group.png" alt="logo">
+                <h4>وصال</h4>
+            </div>
+            <div class="content">
+                منصة إنسانية تهدف لربط المتبرعين بالعائلات المحتاجة بطريقة شفافة، سهلة، وآمنة.<br> نعمل على تسهيل إيصال التبرعات بمختلف أشكالها لمن هم في أمسّ الحاجة، ونؤمن أن كل مساعدة، مهما كانت بسيطة، قادرة على صناعة فرق حقيقي.
+            </div>
+        </div>
+        <div class="links">
+            <div class="box">
+                <h4>الروابط السريعة</h4>
+                <a href="landing.htm">الرئيسية</a>
+                <a href="availabe.htm">المساعدات المتاحة</a>
+                <a href="how.htm">كيف يعمل الموقع</a>
+                <a href="volunteer.html">تطوع معنا </a>
+                <a href="reqHelp.htm">طلب المساعدة</a>
+                <a href="us.html">من نحن؟</a>
+            </div>
+            <div class="box">
+                <h4>الشروط والسياسات</h4>
+                <a href="">الشروط والأحكام</a>
+                <a href="">سياسية الخصوصية</a>
+                <a href="">سياسية ملفات تعريف الارتباط</a>
+                <a href="commonQues.htm">الأسئلة الشائعة</a>
+            </div>
+            <div class="box">
+                <h4>مواقع التواصل الاجتماعي</h4>
+                <div class="social">
+                    <a href=""><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href=""><i class="fa-brands fa-instagram"></i></a>
+                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="foot">
+            جميع الحقوق محفوظة لمنصة وصال &copy; 2025
+        </div>
+    </div>
+
+  <script src="js/header.js"></script>
+  <script src="js/withdraw-request.js"></script>
+</body>
+</html>
