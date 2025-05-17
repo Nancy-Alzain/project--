@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
       form.reset();
       selectedFiles = [];
       renderPreviews();
+      setTimeout(() => (window.location.href = "../my-request.htm"), 2000);
     });
   });
 

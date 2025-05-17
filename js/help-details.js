@@ -2,8 +2,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const urlParams = new URLSearchParams(window.location.search);
   const requestId = urlParams.get("id");
 
-  const requestList = JSON.parse(localStorage.getItem("aidRequests")) || [];
-  const selectedRequest = requestList.find((req) => req.id === requestId);
+  let selectedRequest =
+    JSON.parse(localStorage.getItem("selectedRequest")) || null;
+
+  if (!selectedRequest || selectedRequest.id != requestId) {
+    const allRequests = JSON.parse(localStorage.getItem("aidRequests")) || [];
+    selectedRequest = allRequests.find((r) => r.id == requestId);
+  }
 
   if (!selectedRequest) {
     console.error("لم يتم العثور على بيانات الحالة المطلوبة.");

@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (confirmed) {
         // حذف من localStorage
         allRequests = allRequests.filter((req) => req.id != requestId);
-        localStorage.setItem("allRequests", JSON.stringify(allRequests));
+        localStorage.setItem("aidRequests", JSON.stringify(allRequests));
 
         // حذف من الصفحة
         card.remove();

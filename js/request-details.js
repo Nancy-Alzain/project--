@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     JSON.parse(localStorage.getItem("selectedRequest")) || null;
 
   if (!selectedRequest || selectedRequest.id != requestId) {
-    const allRequests = JSON.parse(localStorage.getItem("allRequests")) || [];
+    const allRequests = JSON.parse(localStorage.getItem("aidRequests")) || [];
     selectedRequest = allRequests.find((r) => r.id == requestId);
   }
 
