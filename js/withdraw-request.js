@@ -38,7 +38,7 @@ let total = 0;
 myRequests.forEach((req) => {
   total += req.collected;
 });
-
+localStorage.setItem("totalDonation", total);
 document.getElementById("total-donations").textContent = `${total} شيكل`;
 
 // التحقق من المبلغ
@@ -118,7 +118,8 @@ submitBtn.addEventListener("click", () => {
     JSON.parse(localStorage.getItem("withdrawRequests")) || [];
   oldRequests.push(newRequest);
   localStorage.setItem("withdrawRequests", JSON.stringify(oldRequests));
-
+  total -= amount;
+  localStorage.setItem("totalDonation", total);
   // تحويل المستخدم لصفحة التأكيد
   setTimeout(() => {
     window.location.href = "../withdraw-success.html";

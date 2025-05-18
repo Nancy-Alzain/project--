@@ -32,10 +32,16 @@ body {
   margin-left: 10px;
   cursor: pointer;
 }
-
-.withdraw-container h2 {
+i.fas.fa-cash-register {
+    font-size: 50px;
+    display: block;
+    margin: 10px auto 20px;
     text-align: center;
     color: #1A6C9E;
+}
+.withdraw-container h2 {
+    text-align: center;
+    color: #333;
     margin-bottom: 25px;
     font-size: 30px;
 }
@@ -52,7 +58,7 @@ p.text {
     max-width: 500px;
     margin: auto;
     text-align: center;
-    color: #1A6C9E;
+    color: #555;
     font-weight: 500;
     margin-top: 20px;
 }
