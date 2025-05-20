@@ -1,17 +1,25 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const userEmail = localStorage.getItem("tempEmail") || "";
+  // userType = localStorage.getItem("userType");
+
+  if (!userEmail || !localStorage.getItem("userType")) {
+    alert("يجب تسجيل الدخول أولاً");
+    window.location.href = "login.htm";
+    // return;
+  }
   const form = document.getElementById("edit-help-form");
   const titleInput = document.getElementById("title");
   const typeInput = document.getElementById("type");
   const amountInput = document.getElementById("amount");
   const priorityInput = document.getElementById("priority");
-  const statusInput = document.getElementById("status");
+  // const statusInput = document.getElementById("status");
   const descriptionInput = document.getElementById("description");
   const imageInput = document.getElementById("image");
   const replaceProofInput = document.getElementById("replaceProof");
   const addProofInput = document.getElementById("addProof");
-  const selectedRequest = JSON.parse(localStorage.getItem("selectedRequest"));
-  let aidRequests = JSON.parse(localStorage.getItem("aidRequests")) || [];
 
+  let aidRequests = JSON.parse(localStorage.getItem("aidRequests")) || [];
+  const selectedRequest = JSON.parse(localStorage.getItem("selectedRequest"));
   if (!selectedRequest) {
     alert("لم يتم تحديد حالة للتعديل.");
     window.location.href = "my-request.htm";
@@ -44,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
   typeInput.value = selectedRequest["card-category"] || "";
   amountInput.value = selectedRequest.goal || "";
   priorityInput.value = selectedRequest.priority || "medium";
-  statusInput.value = selectedRequest.status || "new";
+  // statusInput.value = selectedRequest.status || "new";
   descriptionInput.value = selectedRequest["card-desc"] || "";
 
   form.addEventListener("submit", function (e) {
@@ -63,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
     selectedRequest["card-category"] = typeInput.value.trim();
     selectedRequest.goal = parseFloat(amountInput.value) || 0;
     selectedRequest.priority = priorityInput.value;
-    selectedRequest.status = statusInput.value;
+    // selectedRequest.status = statusInput.value;
     selectedRequest["card-desc"] = descriptionInput.value.trim();
 
     const fileReadPromises = [];
@@ -127,7 +135,6 @@ document.addEventListener("DOMContentLoaded", function () {
         })
       );
     }
-
     Promise.all(fileReadPromises).then(() => {
       saveUpdates();
     });

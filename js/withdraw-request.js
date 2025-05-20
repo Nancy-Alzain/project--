@@ -16,10 +16,11 @@ localStorage.setItem("donations", JSON.stringify(sampleDonations));
 
 const userName = localStorage.getItem("userNameNeedy") || "مستخدم";
 const userEmail = localStorage.getItem("tempEmail") || "";
+// userType = localStorage.getItem("userType");
 
-if (!userEmail) {
+if (!userEmail || !localStorage.getItem("userType")) {
   alert("يجب تسجيل الدخول أولاً");
-  window.location.href = "login.html";
+  window.location.href = "login.htm";
   // return;
 }
 
@@ -39,7 +40,7 @@ myRequests.forEach((req) => {
   total += req.collected;
 });
 localStorage.setItem("totalDonation", total);
-document.getElementById("total-donations").textContent = `${total} شيكل`;
+document.getElementById("total-donations").textContent = `${total} $`;
 
 // التحقق من المبلغ
 const withdrawInput = document.getElementById("withdraw-amount");
@@ -120,8 +121,15 @@ submitBtn.addEventListener("click", () => {
   localStorage.setItem("withdrawRequests", JSON.stringify(oldRequests));
   total -= amount;
   localStorage.setItem("totalDonation", total);
-  // تحويل المستخدم لصفحة التأكيد
+
   setTimeout(() => {
-    window.location.href = "../withdraw-success.html";
-  }, 1000);
+    showPopup();
+  }, 300);
 });
+function showPopup() {
+  document.getElementById("success-popup").style.display = "flex";
+}
+
+function closePopup() {
+  document.getElementById("success-popup").style.display = "none";
+}

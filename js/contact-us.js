@@ -1,4 +1,12 @@
 document.querySelector("form").addEventListener("submit", function (e) {
+  const userEmail = localStorage.getItem("tempEmail") || "";
+  // userType = localStorage.getItem("userType");
+
+  if (!userEmail || !localStorage.getItem("userType")) {
+    alert("يجب تسجيل الدخول أولاً");
+    window.location.href = "login.htm";
+    // return;
+  }
   e.preventDefault();
 
   const name = document.getElementById("name").value.trim();

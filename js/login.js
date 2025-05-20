@@ -55,6 +55,15 @@ form.addEventListener("submit", function (e) {
     })
     .then((data) => {
       const userType = data.userType;
+      localStorage.setItem("tempEmail", data.email);
+      localStorage.setItem("currentUserEmail", data.email);
+      if (selectedUserType === "donor") {
+        localStorage.setItem("userName", data.name);
+      } else if (selectedUserType === "needy") {
+        localStorage.setItem("userNameNeedy", data.name);
+      }
+      localStorage.setItem("userType", selectedUserType);
+      localStorage.setItem("resetMode", "false");
 
       // ✅ توجيه المستخدم حسب نوعه
       if (userType === "donor") {

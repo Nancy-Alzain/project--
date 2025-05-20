@@ -1,4 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const userEmail = localStorage.getItem("tempEmail") || "";
+  // userType = localStorage.getItem("userType");
+
+  if (!userEmail || !localStorage.getItem("userType")) {
+    alert("يجب تسجيل الدخول أولاً");
+    window.location.href = "login.htm";
+    // return;
+  }
   const caseTitle = document.querySelector(".case-title");
   const collected = document.querySelector(".collected");
   const progress = document.querySelector(".progress");

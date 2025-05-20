@@ -20,7 +20,7 @@
     <!-- <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="css/needy-dashboard.css">
 </head>
-<body>
+<body>     
     <div class="header">
         <a class="logo" href="landing.htm">
             <img src="img/Group.png" alt="logo">
@@ -29,7 +29,7 @@
         <ul  class="links" id="main-nav">
       <!-- الروابط ستُضاف هنا بواسطة JavaScript -->
     </ul>
-<div class="log-btn"></div> 
+    <div class="log-btn"></div> 
         <!-- زر القائمة (☰) -->
         <div class="menu-toggle">&#9776;</div>
     </div>
@@ -59,27 +59,17 @@
             </div>
         </div>
         <div class="card-grid">
-        <div class="dashboard-card clickable"  onclick="location.href='my-request.htm'">
-            <i class="fas fa-folder-open card-icon"></i>
-            <h3>طلباتي السابقة</h3>
-            <p>عرض ومتابعة جميع طلبات المساعدة</p>
+        <div class="dashboard-card clickable"  onclick="location.href='my-donations.htm'">
+            <i class="fas fa-hand-holding-heart card-icon"></i> <!-- تبرعات -->
+            <h3>تبرعاتي</h3>
+            <p>عرض ومتابعة جميع تبرعاتي</p>
         </div>
-        <div class="dashboard-card clickable"  onclick="location.href='request-help.htm'">
-            <i class="fas fa-paper-plane card-icon"></i>
-            <h3>إرسال طلب جديد</h3>
-            <p>املأ النموذج لطلب مساعدة جديدة</p>
+        <div class="dashboard-card clickable"  onclick="location.href='availabeHelp.htm'">
+            <i class="fas fa-box-open card-icon"></i> <!-- صندوق مساعدات مفتوح -->
+            <h3>المساعدات المتاحة</h3>
+            <p>تصفح جميع المساعدات</p>
         </div>
-        <div class="dashboard-card clickable" style="cursor: no-drop;">
-            <i class="fas fa-money-check-alt card-icon"></i> 
-            <h3>التبرعات المستلمة</h3>
-            <p id="donation-total">0 شيكل</p>
-        </div>
-        <div class="dashboard-card clickable" onclick="location.href='withdraw-request.html'">
-            <i class="fas fa-cash-register card-icon"></i>     <!-- ماكينة كاش -->
-            <h3>طلب سحب مبلغ</h3>
-            <p>اسحب رصيدك المتوفر نقدًا أو عبر البنك</p>
-        </div>
-        <div class="dashboard-card clickable" onclick="location.href='update-needy.htm'">
+        <div class="dashboard-card clickable" onclick="location.href='update-donor.html'">
             <i class="fas fa-cog card-icon"></i>
             <h3>الإعدادات</h3>
             <p>تحديث بيانات الحساب</p>
@@ -130,41 +120,55 @@
             جميع الحقوق محفوظة لمنصة وصال &copy; 2025
         </div>
     </div>    
- 
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script> -->
+<!--  هذا فقط لظهور الااشعارات  -->
+  <!-- <script>
+    const toggleButton = document.getElementById("notification-toggle");
+    const dropdown = document.getElementById("notification-dropdown");
+    const clearButton = document.getElementById("clear-notifications");
+
+    toggleButton.addEventListener("click", () => {
+      dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+    });
+
+    clearButton.addEventListener("click", () => {
+      dropdown.innerHTML = "<p style='text-align:center; color:#999;'>لا توجد إشعارات.</p>";
+    });
+
+    window.addEventListener("click", function(e) {
+      if (!e.target.closest(".notification-wrapper")) {
+        dropdown.style.display = "none";
+      }
+    });
+  </script>  -->
   
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const userType = localStorage.getItem("userType");
-        if (!userType) {
-            window.location.href = "login.htm";
-        }
+    const userType = localStorage.getItem("userType");
+      if (!userType) {
+          window.location.href = "login.htm";
+      }
     // استرداد الاسم والبريد من localStorage 
-    const name = localStorage.getItem("userNameNeedy") || "مستخدم";
+    const name = localStorage.getItem("userNameDonor") || "مستخدم";
     const email = localStorage.getItem("tempEmail") || "email@example.com";
     // عرض الاسم والبريد في الصفحة 
     document.getElementById("needy-name").textContent = name;
     document.getElementById("needy-email").textContent = email;
 
-    //   const donations = JSON.parse(localStorage.getItem("donations")) || [];
-    //   const total = donations
-    //     .filter((d) => d.needyEmail === email)
-    //     .reduce((sum, d) => sum + d.amount, 0);
-    // للمبلغ 
-    let total = localStorage.getItem("totalDonation")
-    document.getElementById("donation-total").textContent = total + "$";
+
     // إشعارات تجريبية (مرة واحدة فقط) 
 
     const sampleNotifications = [
-        { message: "تمت الموافقة على طلب المساعدة رقم 124", date: "2025-05-15" },
-        { message: "وصلك تبرع بقيمة 150 شيكل", date: "2025-05-14" },
-        { message: "طلب السحب قيد المراجعة", date: "2025-05-13" },
+        { message: "حالة عاجلة بانتظار دعمك", date: "2025-05-15" },
+        { message: "بفضل دعمك ومساهمات الآخرين، تم جمع كامل المبلغ المطلوب", date: "2025-05-14" },
+        { message: 'نود إعلامك أن تبرعك قد وصل إلى المستفيد "عائلة أبو خالد". جزاك الله خيراً على دعمك السخي.', date: "2025-05-13" },
     ];
 
-      if (!localStorage.getItem("needyNotifications")) {
-        localStorage.setItem("needyNotifications", JSON.stringify(sampleNotifications));
+      if (!localStorage.getItem("donorNotifications")) {
+        localStorage.setItem("donorNotifications", JSON.stringify(sampleNotifications));
       }
 
-      let notifications = JSON.parse(localStorage.getItem("needyNotifications")) || [];
+      let notifications = JSON.parse(localStorage.getItem("donorNotifications")) || [];
       const notificationList = document.getElementById("notification-dropdown");
 
       function renderNotifications() {

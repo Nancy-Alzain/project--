@@ -81,8 +81,8 @@ p.detail-category {
 .close {
     color: #aaa;
     position: absolute;
-    left: 15px;
-    top: 10px;
+    left: 30px;
+    top: 0px;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;

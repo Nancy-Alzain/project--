@@ -1,3 +1,7 @@
+// const userType = localStorage.getItem("userType");
+// if (!userType) {
+//   window.location.href = "login.htm";
+// }
 // تعريف المتغيرات
 // الرسالة التي تظهر
 const toast_pass = document.getElementById("toast-pass");

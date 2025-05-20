@@ -111,13 +111,11 @@ p.description {
 .badge.urgent {
   background-color: #dc3545;
 }
-
-.badge.new {
-  background-color: #62A3DB;
+.badge.mean {
+  background-color: #62db7c;
 }
-
-.badge.trusted {
-  background-color: #0d6d55;
+.badge.normal {
+  background-color: #62A3DB;
 }
 
 .card-title {

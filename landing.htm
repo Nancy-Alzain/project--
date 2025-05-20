@@ -18,19 +18,20 @@
 
     
         <!-- CSS File -->
-         <link rel="stylesheet" href="css/header&footer.css">
+        <link rel="stylesheet" href="css/header&footer.css">
+        <link rel="stylesheet" href="css/avialableHelp.css">
         <link rel="stylesheet" href="css/landing.css">
 </head>
 <body>
     <div class="header">
         <div class="head">
-            <a class="logo" href="">
+            <a class="logo" href="landing.htm">
               <img src="img/Group.png" alt="logo">
               <h3>وصال</h3>
             </a>
           
             <!-- القائمة -->
-            <ul class="links">
+            <!-- <ul class="links">
               <li><a href="landing.htm">الرئيسية</a></li>
               <li><a href="availabeHelp.htm">المساعدات المتاحة</a></li>
               <li><a href="how.htm">كيف يعمل الموقع</a></li>
@@ -38,13 +39,12 @@
               <li><a href="request-help.htm">طلب المساعدة</a></li>
               <li><a href="us.html">من نحن؟</a></li>
               <li><a href="contact-us.htm">تواصل معنا</a></li>
-            </ul>
-          
+            </ul> -->
+        <ul  class="links" id="main-nav">
+      <!-- الروابط ستُضاف هنا بواسطة JavaScript -->
+        </ul>
             <!-- أزرار الدخول -->
-            <div class="log-btn">
-              <button id="create" class="create">إنشاء حساب</button>
-              <button id="login" class="login">تسجيل الدخول</button>
-            </div>
+           <div class="log-btn"></div> 
           
             <!-- زر القائمة (☰) -->
             <div class="menu-toggle">&#9776;</div>
@@ -56,6 +56,7 @@
             <br> ساهم في تغيير حياة عائلة، فكل مساعدة تصنع فرقًا.</p>
         </div>
     </div>
+    <div class="container-head">
     <!-- لماذا منصةوصال  -->
     <section class="features">
         <h2>لماذا منصة وصال؟</h2>
@@ -108,69 +109,10 @@
     <section class="urgent-help">
         <h2>مساعدات عاجلة</h2>
         <p>في هذا القسم نعرض المساعدات العاجلة التي تحتاج لتدخل فوري. كن أنت سبب الفرج لعائلة تنتظر دعماً يعيد لها الأمان والأمل.</p>
-
-        <div class="cards-container">
-            <!-- البطاقة الأولى -->
-            <div class="card">
-                <img src="img/four.jpg" alt="علاج طارئ لطفلة مريضة">
-                <span class="badge new">حالة جديدة</span>
-                <div class="content">
-                    <h3>علاج طارئ لطفلة مريضة</h3>
-                    <p>العائلة بحاجة لسلة غذائية عاجلة في شمال غزة</p>
-                    <small>مساعدة طبية</small>
-                    <div class="progress-bar" data-collected="50" data-goal="160">
-                        <div class="progress"></div>
-                    </div>
-                    <p class="amount">تم جمع $50 من أصل $160</p>
-                </div>
-                <button class="donate-btn">تبرع الآن</button>
-            </div>
-            <!-- البطاقة الثانية -->
-            <div class="card">
-                <img src="img/four.jpg" alt="مساعدة غذائية لعائلة نازحة">
-                <span class="badge urgent">عاجل</span>
-                <div class="content">
-                    <h3>مساعدة غذائية لعائلة نازحة وصلت حديثاً</h3>
-                    <p>العائلة وصلت لمخيم الإيواء وتحتاج سلة غذائية أساسية بشكل عاجل</p>
-                    <small>مساعدة غذائية</small>
-                    <div class="progress-bar" data-collected="30" data-goal="300">
-                        <div class="progress"></div>
-                    </div>
-                    <p class="amount">تم جمع $30 من أصل $300</p>
-                </div>
-                <button class="donate-btn">تبرع الآن</button>
-            </div>
-            <!-- البطاقة الثالثة -->
-            <div class="card">
-                <img src="img/four.jpg" alt="وجبات ساخنة لعائلة في الخيام">
-                <span class="badge approved">موثقة</span>
-                <div class="content">
-                    <h3>وجبات ساخنة لعائلة تقيم في الخيام</h3>
-                    <p>العائلة تعيش في ظروف صعبة وتحتاج لتوفير وجبات غذائية بشكل يومي</p>
-                    <small>مساعدة غذائية</small>
-                    <div class="progress-bar" data-collected="90" data-goal="120">
-                        <div class="progress"></div>
-                    </div>
-                    <p class="amount">تم جمع $90 من أصل $120</p>
-                </div>
-                <button class="donate-btn">تبرع الآن</button>
-            </div>
-            <!-- البطاقة الرابعة -->
-            <div class="card">
-                <img src="img/four.jpg" alt="مساعدة ملابس ودفء لطفل نازح">
-                <span class="badge new">حالة جديدة</span>
-                <div class="content">
-                    <h3>مساعدة ملابس ودفء لطفل نازح</h3>
-                    <p>الطفل بحاجة لتوفير ملابس شتوية وبطانية تساعده على تحمل ظروف البرد</p>
-                    <small>مساعدة عينية</small>
-                    <div class="progress-bar" data-collected="50" data-goal="100">
-                        <div class="progress"></div>
-                    </div>
-                    <p class="amount">تم جمع $50 من أصل $100</p>
-                </div>
-                <button class="donate-btn">تبرع الآن</button>
-            </div>
-
+        <div class="cards" id="cards-container">
+            <!-- سيتم ملء الكروت تلقائيًا من JavaScript -->
+        </div>
+        <div class="view-all-button-container">
         </div>
     </section>
     <!-- قسم الإحصائيات -->
@@ -194,16 +136,7 @@
         </div>
     </div>
     </section> 
-    <!-- تبرع الان  --> 
-    <!-- مع عنوان الموقع -->
-    <section class="quick-links">
-    <h2>ابدأ الآن</h2>
-    <p>اختر ما يناسبك وابدأ بخطوة تصنع فرقًا.</p>
-    <div class="buttons">
-        <a href="giveHelp.htm" class="btn donate">تبرع الآن</a>
-        <a href="reqHelp.htm" class="btn request">طلب مساعدة</a>
-    </div>
-    </section>
+</div>
   <!-- footer -->
     <div class="footer">
         <div class="text">
@@ -245,16 +178,76 @@
     </div>
     <!-- لاضافة زرين ثابتين للتبرع او طلب المساعدة -->
     <div class="floating-buttons">
-        <a href="availabeHelp.htm" class="floating-btn donate-btn">
-          <i class="fas fa-hand-holding-heart"></i>
-          <span>تبرع الآن</span>
-        </a>
-        <a href="request-help.htm" class="floating-btn request-btn">
-          <i class="fas fa-hands-helping"></i>
-          <span>طلب مساعدة</span>
-        </a>
     </div>
-      
+    <script src="js/requests-data.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const REQUESTS_KEY = "aidRequests";
+    let allRequests = JSON.parse(localStorage.getItem(REQUESTS_KEY)) || [];
+
+    const homeContainer = document.getElementById("cards-container");
+
+    function formatCurrency(amount) {
+        if (amount < 1000) return "$" + amount;
+        return "$" + amount.toLocaleString("en-US");
+    }
+
+    function createCard(data) {
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.id = data.id;
+        card.setAttribute("data-category", data["card-category"]);
+
+        card.innerHTML = `
+        <img src="${data.img}" alt="${data["card-title"]}">
+        <div class="badge ${data.type}">${data.name}</div>
+        <div class="card-body">
+            <div class="card-title">${data["card-title"]}</div>
+            <div class="card-desc">${data["card-desc"]}</div>
+            <div class="card-category">${data["card-category"]}</div>
+            <div class="progress-bar">
+            <div class="progress-bar-fill" style="width: ${Math.min(
+                (data.collected / data.goal) * 100,
+                100
+            )}%;"></div>
+            </div>
+            <div class="progress-text">${formatCurrency(
+            data.collected
+            )} / ${formatCurrency(data.goal)} دولار</div>
+        </div>
+        `;
+        const userType = localStorage.getItem("userType");
+        let btn_view  = document.querySelector(".view-all-button-container");
+        if (userType === "donor"){
+            card.addEventListener("click", () => {
+            localStorage.setItem("selectedRequest", JSON.stringify(data));
+            localStorage.setItem("viewSource", "donor");
+            window.location.href = `help-details.html?id=${card.id}`;
+        });
+        btn_view.innerHTML = `
+            <a href="availabeHelp.htm" class="view-all-button">عرض جميع المساعدات</a>
+        `
+        }else{
+            card.style.cursor = "auto"
+        }
+
+
+        homeContainer.appendChild(card);
+    }
+
+    //عرض أول 6 كروت فقط
+    // const previewCards = allRequests.slice(0, 6);
+    // previewCards.forEach((card) => createCard(card));
+    // ✅ فلترة حسب الحالة ثم أخذ أول 6 كروت
+    const previewCards = allRequests
+    .filter(card => card.name === "عاجلة")
+    .slice(0, 6);
+
+    previewCards.forEach((card) => createCard(card));
+
+    });
+
+    </script>
     <script src="js/head-land.js"></script>
 </body>
 </html> 

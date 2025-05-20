@@ -1,10 +1,10 @@
-// التحقق من تسجيل الدخول
 document.addEventListener("DOMContentLoaded", () => {
+  const userType = localStorage.getItem("userType");
   const currentUserEmail = localStorage.getItem("tempEmail");
 
-  if (!currentUserEmail) {
+  if (!currentUserEmail || !userType) {
     alert("يجب تسجيل الدخول أولاً");
-    window.location.href = "login.html";
+    window.location.href = "login.htm";
     return;
   }
 
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   myRequests.forEach((request) => {
     const card = document.createElement("div");
-    const isFinished = request.goal == request.collected;
+    const isFinished = request.goal <= request.collected;
     const percentage = Math.min((request.collected / request.goal) * 100, 100);
 
     card.className = "request-card";
@@ -123,8 +123,13 @@ document.addEventListener("DOMContentLoaded", () => {
       e.stopPropagation();
       const card = button.closest(".request-card");
       const requestId = card.getAttribute("data-id");
+      const currentReq = myRequests.find((req) => req.id == requestId);
 
-      window.location.href = `edit-request.htm?id=${requestId}`;
+      if (currentReq) {
+        localStorage.setItem("selectedRequest", JSON.stringify(currentReq));
+        localStorage.setItem("viewSource", "needy");
+        window.location.href = `edit-request.htm?id=${requestId}`;
+      }
     });
   });
 });

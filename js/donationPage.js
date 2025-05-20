@@ -1,4 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const userEmail = localStorage.getItem("tempEmail") || "";
+  // userType = localStorage.getItem("userType");
+
+  if (!userEmail || !localStorage.getItem("userType")) {
+    alert("يجب تسجيل الدخول أولاً");
+    window.location.href = "login.htm";
+    // return;
+  }
   const selectedRequest = JSON.parse(localStorage.getItem("selectedRequest"));
 
   // التأكد من وجود البيانات

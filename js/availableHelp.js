@@ -1,7 +1,26 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const userEmail = localStorage.getItem("tempEmail") || "";
+  // userType = localStorage.getItem("userType");
+
+  if (!userEmail || !localStorage.getItem("userType")) {
+    alert("يجب تسجيل الدخول أولاً");
+    window.location.href = "login.htm";
+    // return;
+  }
+
   const REQUESTS_KEY = "aidRequests"; // 👈 المفتاح الموحد
 
   let allRequests = JSON.parse(localStorage.getItem(REQUESTS_KEY)) || [];
+
+  // تحديث الحالات المنتهية
+  allRequests.forEach((request) => {
+    if (request.collected >= request.goal) {
+      request.status = "منتهية";
+    }
+  });
+
+  // حفظ التحديث في localStorage
+  localStorage.setItem(REQUESTS_KEY, JSON.stringify(allRequests));
 
   const container = document.getElementById("cards-container");
 
@@ -23,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     card.innerHTML = `
       <img src="${data.img}" alt="${data["card-title"]}">
-      <div class="badge ${data.type}">${data.status}</div>
+      <div class="badge ${data.type}">${data.name}</div>
       <div class="card-body">
         <div class="card-title">${data["card-title"]}</div>
         <div class="card-desc">${data["card-desc"]}</div>
@@ -39,6 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
         )} / ${formatCurrency(data.goal)} دولار</div>
       </div>
     `;
+
     // عند الضغط على الكادر
     card.addEventListener("click", () => {
       if (card.id) {
@@ -53,8 +73,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     container.appendChild(card);
   }
+  // allRequests.forEach((card) => createCard(card));
+  // ✅ فلترة الطلبات اللي حالتها مش "منتهية"
+  const availableRequests = allRequests.filter(
+    (request) => request.status !== "منتهية"
+  );
 
-  allRequests.forEach((card) => createCard(card));
+  availableRequests.forEach((card) => createCard(card));
 });
 
 // دالة الفلترة

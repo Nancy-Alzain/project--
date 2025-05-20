@@ -1,4 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const userEmail = localStorage.getItem("tempEmail") || "";
+  // userType = localStorage.getItem("userType");
+
+  if (!userEmail || !localStorage.getItem("userType")) {
+    alert("يجب تسجيل الدخول أولاً");
+    window.location.href = "login.htm";
+    // return;
+  }
   const urlParams = new URLSearchParams(window.location.search);
   const requestId = urlParams.get("id");
 
@@ -44,22 +52,27 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("detail-img").src =
     selectedRequest.img || "default-image.jpg";
 
-  document.getElementById("help-badge").textContent = selectedRequest.status;
+  document.getElementById("help-badge").textContent = selectedRequest.name;
+  document
+    .getElementById("help-badge")
+    .classList.add(`${selectedRequest.type}`);
 
   let req_status = document.getElementById("request-status");
   req_status.className = "request-status";
   req_status.classList.add(
     `${
-      selectedRequest.goal === selectedRequest.collected
-        ? "finished"
-        : "pending"
+      selectedRequest.goal <= selectedRequest.collected ? "finished" : "pending"
     }`
   );
   req_status.textContent = `${
-    selectedRequest.goal !== selectedRequest.collected
-      ? "الحالة : قيد الانتظار "
-      : "الحالة : منتهية"
+    selectedRequest.goal <= selectedRequest.collected
+      ? "الحالة : منتهية"
+      : "الحالة : قيد الانتظار "
   }`;
+  if (selectedRequest.collected >= selectedRequest.goal) {
+    selectedRequest.status = "منتهية";
+  }
+  localStorage.setItem("selectedRequest", JSON.stringify(selectedRequest));
 
   // ======== عرض ملفات الإثبات بشكل متقدم ==========
   const container = document.getElementById("proof-files-container");

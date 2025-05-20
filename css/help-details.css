@@ -54,7 +54,10 @@
 .badge.urgent {
   background-color: #dc3545;
 }
-.badge.new {
+.badge.mean {
+  background-color: #62db7c;
+}
+.badge.normal {
   background-color: #62A3DB;
 }
 .title-row {
@@ -70,7 +73,8 @@
     margin-bottom: 5px;
 }
 .meta {
-  color: #666;
+  color: #1A6C9E;
+  font-weight: 500;
   margin-bottom: 10px;
 }
 

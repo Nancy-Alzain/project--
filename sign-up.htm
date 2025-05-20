@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="css/sign-up.css">
     <link rel="stylesheet" href="css/header&footer.css">
     <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/headerBtns.css">
 
     <!-- Google Identity   -->
     <!-- تحميل مكتبة Google -->
@@ -26,30 +27,35 @@
 
 </head>
 <body> 
-    <div class="header">
+    <header class="auth-header">
+  <div class="logo-box">
+    <a class="logo" href="">
+            <img src="img/Group.png" alt="logo">
+            <h3>وصال</h3>
+    </a>
+    <div class="top-buttons">
+        <a href="landing.htm" class="main-btn">الرئيسية</a>
+        <a href="login.htm" class="auth-btn">تسجيل الدخول</a>
+        <a href="sign-up.htm" class="auth-btn secondary">إنشاء حساب</a>
+    </div>
+  </div>
+  <div class="text">
+    <h1 class="welcome-message">أهلًا بك في منصتنا الإنسانية 💙</h1>
+    <p class="sub-message">نرافقك بخطوة بخطوة نحو الأمل</p>
+  </div>
+   
+    </header>
+    <!-- <div class="header">
         <a class="logo" href="">
             <img src="img/Group.png" alt="logo">
             <h3>وصال</h3>
         </a>
-
-        <ul class="links">
-                <li><a href="landing.htm">الرئيسية</a></li>
-                <!-- <li><a href="availabe.htm">المساعدات المتاحة</a></li> -->
-                <li><a href="how.htm">كيف يعمل الموقع</a></li>
-                <li><a href="volunteer.html">تطوع معنا </a></li>
-                <!-- <li><a href="giveHelp.htm">تقديم المساعدة</a></li>
-                <li><a href="reqHelp.htm">طلب المساعدة</a></li> -->
-                <li><a href="us.html">من نحن؟</a></li>
-                <!-- بدنا يكون عليها active -->
-                <li><a href="contact-us.htm">تواصل معنا</a></li>
-        </ul>
-        <div class="log-btn">
-            <button id="create" class="create">إنشاء حساب</button>
-            <button id="login" class="login">تسجيل الدخول</button>
-        </div>
-        <!-- زر القائمة (☰) -->
+      <ul  class="links" id="main-nav">
+      
+    </ul>
+        <div class="log-btn"></div> 
         <div class="menu-toggle">&#9776;</div>
-    </div>
+    </div> -->
     <div class="container">
         <div class="con-logo">
             <div class="logo">
@@ -87,7 +93,7 @@
     
     <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script> 
     <script src="js/sign-up.js"></script>
-    <script src="js/header.js"></script>
+    <!-- <script src="js/header.js"></script> -->
 </body>
 </html>
  

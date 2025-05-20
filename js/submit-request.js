@@ -1,4 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const userEmail = localStorage.getItem("tempEmail") || "";
+  // userType = localStorage.getItem("userType");
+
+  if (!userEmail || !localStorage.getItem("userType")) {
+    alert("يجب تسجيل الدخول أولاً");
+    window.location.href = "login.htm";
+    // return;
+  }
   const form = document.getElementById("request-form");
   let selectedFiles = [];
 
@@ -7,17 +15,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const title = document.getElementById("title").value.trim();
     const desc = document.getElementById("description").value.trim();
-    const longDesc = document.getElementById("extra").value.trim();
     const category = document.getElementById("type").value;
     const goal = parseFloat(document.getElementById("goal").value);
     const priority = document.querySelector("#priority").value;
     const files = selectedFiles;
     const extra = document.getElementById("extra").value;
-
+    const location = document.getElementById("location").value;
+    localStorage.setItem("location", location);
     const newRequestData = {
       title,
       desc,
-      longDesc,
       category,
       goal,
       priority,
@@ -32,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
       form.reset();
       selectedFiles = [];
       renderPreviews();
-      setTimeout(() => (window.location.href = "../my-request.htm"), 2000);
+      setTimeout(() => (window.location.href = "../my-request.htm"), 1000);
     });
   });
 
@@ -61,16 +68,19 @@ document.addEventListener("DOMContentLoaded", function () {
     // اختيار صورة عشوائية
     const randomIndex = Math.floor(Math.random() * randomImages.length);
     const randomImage = randomImages[randomIndex];
+    const priorityMap = {
+      عاجلة: "urgent",
+      متوسطة: "mean",
+      عادية: "normal",
+    };
 
     const newRequest = {
       id: newId,
       img: randomImage,
       "card-title": newRequestData.title,
       "card-desc": newRequestData.desc,
-      "card-longDesc": newRequestData.longDesc,
-      "desc-after-pay": "",
-      type: "new",
-      name: "حالة جديدة",
+      type: priorityMap[newRequestData.priority] || "",
+      name: newRequestData.priority,
       "card-category": newRequestData.category,
       date: new Date().toLocaleDateString("ar-EG"),
       collected: 0,
@@ -78,7 +88,11 @@ document.addEventListener("DOMContentLoaded", function () {
       proofFiles: newRequestData.files || [],
       extra: newRequestData.extra || {},
       donors: [],
-      status: "الحالة : قيد التنفيذ",
+      status:
+        newRequestData.goal <= newRequestData.collected
+          ? "الحالة : منتهية"
+          : "الحالة : قيد الانتظار ",
+
       ownerEmail: localStorage.getItem("tempEmail") || "unknown",
     };
 
@@ -255,6 +269,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  let logout = document.querySelector(".logout");
-  logout.addEventListener("click", () => window.open("../login.htm", "_self"));
+  // let logout = document.querySelector(".logout");
+  // logout.addEventListener("click", () => window.open("../login.htm", "_self"));
 });

@@ -1,4 +1,8 @@
 // تهيئة EmailJS
+// const userType = localStorage.getItem("userType");
+// if (!userType) {
+//   window.location.href = "login.htm";
+// }
 window.onload = function () {
   emailjs.init("f3KryF0v-LG0MvQz2");
 

@@ -1,4 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const userEmail = localStorage.getItem("tempEmail") || "";
+  // userType = localStorage.getItem("userType");
+
+  if (!userEmail || !localStorage.getItem("userType")) {
+    alert("يجب تسجيل الدخول أولاً");
+    window.location.href = "login.htm";
+    // return;
+  }
   const urlParams = new URLSearchParams(window.location.search);
   const requestId = urlParams.get("id");
 
@@ -16,8 +24,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // تعبئة البيانات في العناصر
-  document.getElementById("help-badge").textContent =
-    selectedRequest.type === "urgent" ? "عاجل" : "حالة جديدة";
+  document.getElementById("help-badge").textContent = selectedRequest.name;
+  document
+    .getElementById("help-badge")
+    .classList.add(`${selectedRequest.type}`);
   document.getElementById("detail-img").src =
     selectedRequest.img || "img/default.jpg";
   document.getElementById("detail-title").textContent =
@@ -76,6 +86,10 @@ document.addEventListener("DOMContentLoaded", function () {
         li.innerHTML = `<strong>${key}:</strong> ${extraData[key]}`;
         extraList.appendChild(li);
       }
+    } else if (extraData) {
+      const li = document.createElement("li");
+      li.textContent = selectedRequest.extra;
+      extraList.appendChild(li);
     } else {
       const li = document.createElement("li");
       li.textContent = "لا توجد تفاصيل إضافية متوفرة.";
@@ -89,56 +103,6 @@ document.addEventListener("DOMContentLoaded", function () {
     .addEventListener("click", toggleExtraDetails);
 
   renderExtraDetails(selectedRequest.extra);
-
-  // ======== عرض ملفات الإثبات بشكل متقدم ==========
-  const container = document.getElementById("proof-files-container");
-  container.innerHTML = "";
-
-  if (selectedRequest.proofFiles?.length > 0) {
-    selectedRequest.proofFiles.forEach((file) => {
-      const div = document.createElement("div");
-      div.classList.add("proof-file");
-
-      if (file.type.startsWith("image/")) {
-        const img = document.createElement("img");
-        img.src = file.content;
-        img.alt = file.name;
-        img.classList.add("proof-image");
-
-        // عند الضغط، عرض بالحجم الكامل
-        // img.addEventListener("click", () => {
-        //   const fullWindow = window.open("_self");
-        //   fullWindow.document.write(
-        //     `<img src="${file.content}" style="width:100%">`
-        //   );
-        //   fullWindow.document.title = file.name;
-        // });
-
-        div.appendChild(img);
-      } else if (file.type === "application/pdf") {
-        const viewLink = document.createElement("a");
-        viewLink.href = file.content;
-        viewLink.target = "_blank";
-        viewLink.textContent = `عرض الملف (${file.name})`;
-        viewLink.classList.add("proof-download");
-        div.appendChild(viewLink);
-      } else {
-        const link = document.createElement("a");
-        link.href = file.content;
-        link.download = file.name;
-        link.textContent = `تحميل الملف (${file.name})`;
-        link.classList.add("proof-download");
-        div.appendChild(link);
-      }
-
-      container.appendChild(div);
-    });
-  } else {
-    const msg = document.createElement("p");
-    msg.textContent = "لم يتم إرفاق ملفات إثبات.";
-    msg.classList.add("empty-message");
-    container.appendChild(msg);
-  }
 
   // // لقسم المساهمين
   function timeAgo(date) {
@@ -206,6 +170,55 @@ document.addEventListener("DOMContentLoaded", function () {
     li.textContent = "لا توجد مساهمات حتى الآن.";
     li.classList.add("empty-message");
     donorsContainer.appendChild(li);
+  }
+  // ======== عرض ملفات الإثبات بشكل متقدم ==========
+  const container = document.getElementById("proof-files-container");
+  container.innerHTML = "";
+
+  if (selectedRequest.proofFiles?.length > 0) {
+    selectedRequest.proofFiles.forEach((file) => {
+      const div = document.createElement("div");
+      div.classList.add("proof-file");
+
+      if (file.type.startsWith("image/")) {
+        const img = document.createElement("img");
+        img.src = file.content;
+        img.alt = file.name;
+        img.classList.add("proof-image");
+
+        // عند الضغط، عرض بالحجم الكامل
+        // img.addEventListener("click", () => {
+        //   const fullWindow = window.open("_self");
+        //   fullWindow.document.write(
+        //     `<img src="${file.content}" style="width:100%">`
+        //   );
+        //   fullWindow.document.title = file.name;
+        // });
+
+        div.appendChild(img);
+      } else if (file.type === "application/pdf") {
+        const viewLink = document.createElement("a");
+        viewLink.href = file.content;
+        viewLink.target = "_blank";
+        viewLink.textContent = `عرض الملف (${file.name})`;
+        viewLink.classList.add("proof-download");
+        div.appendChild(viewLink);
+      } else {
+        const link = document.createElement("a");
+        link.href = file.content;
+        link.download = file.name;
+        link.textContent = `تحميل الملف (${file.name})`;
+        link.classList.add("proof-download");
+        div.appendChild(link);
+      }
+
+      container.appendChild(div);
+    });
+  } else {
+    const msg = document.createElement("p");
+    msg.textContent = "لم يتم إرفاق ملفات إثبات.";
+    msg.classList.add("empty-message");
+    container.appendChild(msg);
   }
 
   // تهيئة روابط المشاركة
