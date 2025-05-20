@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الصفحة الرئيسية</title>
+        <!-- Normalize  File  -->
+        <link rel="stylesheet" href="css/normalize.css">
+        <!-- Google Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Open+Sans:wdth,wght@75..100,300..800&display=swap" rel="stylesheet">
+        <!-- Font Awesome -->
+         <link rel="stylesheet" href="css/all.min.css">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    
+        <!-- CSS File -->
+         <link rel="stylesheet" href="css/header&footer.css">
+        <link rel="stylesheet" href="css/landing.css">
+</head>
+<body>
+    <div class="header">
+            <?php include "inc/head.php" ?>
+          
+        <div class="content">
+            <h1>لأن الخير يصل حين تمتد الأيادي</h1>
+            <p>نحن في وصال نربط بين من يملكون القدرة على العطاء، وبين من هم بأمسّ الحاجة إليه. 
+            <br> ساهم في تغيير حياة عائلة، فكل مساعدة تصنع فرقًا.</p>
+        </div>
+    </div>
+    <!-- لماذا منصةوصال  -->
+    <section class="features">
+        <h2>لماذا منصة وصال؟</h2>
+        <div class="feature-box">
+            <div class="feature">
+                <i class="fas fa-hand-holding-heart"></i>
+                <h4>سهولة التبرع</h4>
+                <p>يمكنك التبرع بكل سهولة بخطوات بسيطة وآمنة واختر الطريقة الأنسبل لك </p>
+            </div>
+            <div class="feature">
+                <i class="fa-solid fa-file-signature"></i>
+                <h4>طلب المساعدة</h4>
+                <p>نمنح المحتاجين طريقة مباشرة وواضحة لطلب الدعم.</p>
+            </div>
+            <div class="feature">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <h4>تتبع المساعدات</h4>
+                <p>تابع حالة تبرعك أو طلبك لحظة بلحظة بكل شفافية.</p>
+            </div>
+            <div class="feature">
+                <i class="fa-solid fa-shield-heart"></i>
+                <h4>شفافية كاملة</h4>
+                <p>نعرض كافة التفاصيل لضمان ثقة المتبرعين والمحتاجين.</p>
+            </div>
+        </div>
+    </section>
+    <!-- أقسام المساعدات : -->
+    <section class="categories" id="categories">
+    <h2>أنواع المساعدات</h2>
+    <div class="categories-container">
+        <div class="category-box">
+        <i class="fa-solid fa-basket-shopping"></i>
+        <h4>غذاء</h4>
+        </div>
+        <div class="category-box">
+        <i class="fa-solid fa-notes-medical"></i>
+        <h4>أدوية</h4>
+        </div>
+        <div class="category-box">
+        <i class="fa-solid fa-shirt"></i>
+        <h4>ملابس</h4>
+        </div>
+        <div class="category-box">
+        <i class="fas fa-hand-holding-usd"></i>
+        <h4>نقود</h4>
+        </div>
+    </div>
+    </section>
+    <!-- المساعدات العاجلة -->
+    <section class="urgent-help">
+        <h2>مساعدات عاجلة</h2>
+        <p>في هذا القسم نعرض المساعدات العاجلة التي تحتاج لتدخل فوري. كن أنت سبب الفرج لعائلة تنتظر دعماً يعيد لها الأمان والأمل.</p>
+
+        <div class="cards-container">
+            <!-- البطاقة الأولى -->
+            <div class="card">
+                <img src="img/four.jpg" alt="علاج طارئ لطفلة مريضة">
+                <span class="badge new">حالة جديدة</span>
+                <div class="content">
+                    <h3>علاج طارئ لطفلة مريضة</h3>
+                    <p>العائلة بحاجة لسلة غذائية عاجلة في شمال غزة</p>
+                    <small>مساعدة طبية</small>
+                    <div class="progress-bar" data-collected="50" data-goal="160">
+                        <div class="progress"></div>
+                    </div>
+                    <p class="amount">تم جمع $50 من أصل $160</p>
+                </div>
+                <button class="donate-btn">تبرع الآن</button>
+            </div>
+            <!-- البطاقة الثانية -->
+            <div class="card">
+                <img src="img/four.jpg" alt="مساعدة غذائية لعائلة نازحة">
+                <span class="badge urgent">عاجل</span>
+                <div class="content">
+                    <h3>مساعدة غذائية لعائلة نازحة وصلت حديثاً</h3>
+                    <p>العائلة وصلت لمخيم الإيواء وتحتاج سلة غذائية أساسية بشكل عاجل</p>
+                    <small>مساعدة غذائية</small>
+                    <div class="progress-bar" data-collected="30" data-goal="300">
+                        <div class="progress"></div>
+                    </div>
+                    <p class="amount">تم جمع $30 من أصل $300</p>
+                </div>
+                <button class="donate-btn">تبرع الآن</button>
+            </div>
+            <!-- البطاقة الثالثة -->
+            <div class="card">
+                <img src="img/four.jpg" alt="وجبات ساخنة لعائلة في الخيام">
+                <span class="badge approved">موثقة</span>
+                <div class="content">
+                    <h3>وجبات ساخنة لعائلة تقيم في الخيام</h3>
+                    <p>العائلة تعيش في ظروف صعبة وتحتاج لتوفير وجبات غذائية بشكل يومي</p>
+                    <small>مساعدة غذائية</small>
+                    <div class="progress-bar" data-collected="90" data-goal="120">
+                        <div class="progress"></div>
+                    </div>
+                    <p class="amount">تم جمع $90 من أصل $120</p>
+                </div>
+                <button class="donate-btn">تبرع الآن</button>
+            </div>
+            <!-- البطاقة الرابعة -->
+            <div class="card">
+                <img src="img/four.jpg" alt="مساعدة ملابس ودفء لطفل نازح">
+                <span class="badge new">حالة جديدة</span>
+                <div class="content">
+                    <h3>مساعدة ملابس ودفء لطفل نازح</h3>
+                    <p>الطفل بحاجة لتوفير ملابس شتوية وبطانية تساعده على تحمل ظروف البرد</p>
+                    <small>مساعدة عينية</small>
+                    <div class="progress-bar" data-collected="50" data-goal="100">
+                        <div class="progress"></div>
+                    </div>
+                    <p class="amount">تم جمع $50 من أصل $100</p>
+                </div>
+                <button class="donate-btn">تبرع الآن</button>
+            </div>
+
+        </div>
+    </section>
+    <!-- قسم الإحصائيات -->
+    <section class="stats" id="statistics">
+    <h2>إحصائيات منصة وصال</h2>
+    <div class="stats-container">
+        <div class="stat-box">
+        <div class="icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+        <div class="number" data-target="1560">0</div>
+        <p>تبرع مقدم</p>
+        </div>
+        <div class="stat-box">
+        <div class="icon"><i class="fa-solid fa-users"></i></div>
+        <div class="number" data-target="820">0</div>
+        <p>مستفيد</p>
+        </div>
+        <div class="stat-box">
+        <div class="icon"><i class="fa-solid fa-building-columns"></i></div>
+        <div class="number" data-target="45">0</div>
+        <p>جهة مانحة</p>
+        </div>
+    </div>
+    </section> 
+    <!-- تبرع الان  --> 
+    <!-- مع عنوان الموقع -->
+    <section class="quick-links">
+    <h2>ابدأ الآن</h2>
+    <p>اختر ما يناسبك وابدأ بخطوة تصنع فرقًا.</p>
+    <div class="buttons">
+        <a href="giveHelp.htm" class="btn donate">تبرع الآن</a>
+        <a href="reqHelp.htm" class="btn request">طلب مساعدة</a>
+    </div>
+    </section>
+  <!-- footer -->
+  <?php include "inc/footer.php"; ?>
+
+    <!-- لاضافة زرين ثابتين للتبرع او طلب المساعدة -->
+    <div class="floating-buttons">
+        <a href="giveHelp.htm" class="floating-btn donate-btn">
+          <i class="fas fa-hand-holding-heart"></i>
+          <span>تبرع الآن</span>
+        </a>
+        <a href="reqHelp.htm" class="floating-btn request-btn">
+          <i class="fas fa-hands-helping"></i>
+          <span>طلب مساعدة</span>
+        </a>
+      </div>
+      
+    <script src="js/head-land.js"></script>
+</body>
+</html> 
+
