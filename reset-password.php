@@ -3,7 +3,7 @@
 $host = "localhost"; 
 $dbname = "wesal";
 $username = "root";
-$password = ""; // كلمة مرور قاعدة البيانات
+$password = ""; 
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
@@ -95,7 +95,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </div>
   <div class="container">
     <h2>إعادة تعيين كلمة المرور</h2>
-    <form id="resetForm">
+    <form id="resetForm" method="post" action="">
+
       <label for="newPassword">كلمة المرور الجديدة:</label>
       <input type="password" id="newPassword" name="newPassword" required />
       <div class="strength" id="passwordStrength"></div>
